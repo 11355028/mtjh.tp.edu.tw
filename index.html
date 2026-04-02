@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <title>臺北市民族實驗國民中學</title>
     <style>
-        /* 基礎版面鎖定 */
-        body, html {
-            margin: 0; padding: 0; width: 100%; height: 100%;
-        }
-
-        /* 封鎖訊息遮罩 */
+        /* 封鎖層的樣式（絕對優先） */
         #block-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(15px);
-            z-index: 999999;
+            z-index: 2147483647; /* 確保在所有層級之上 */
             display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
             visibility: hidden;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .message-box {
@@ -36,14 +32,8 @@
             transition: all 0.5s ease;
         }
 
-        /* 觸發狀態 */
-        .is-blocked {
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-        .is-blocked .message-box {
-            transform: scale(1) translateY(0);
-        }
+        .is-blocked { opacity: 1 !important; visibility: visible !important; }
+        .is-blocked .message-box { transform: scale(1) translateY(0); }
 
         .btn-unlock {
             margin-top: 30px;
@@ -62,8 +52,6 @@
 </head>
 <body>
 
-    <div id="background-content">
-        <html lang="zh-TW"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
 	<meta name="Accessible_website" content="本網站通過 AA 檢測等級無障礙網頁檢測">
@@ -2432,12 +2420,11 @@ var custom_vars = {"site_url":"https:\/\/web2.mtjh.tp.edu.tw","template_url":"ht
 	<div class="modal_footer">
 		<button class="cus_btn red teacher_login_close">關閉視窗</button>
 	</div>
-</div><div class="popup_align" style="display: inline-block; vertical-align: middle; height: 100%;"></div></div></body></html>
-        </div>
+</div><div class="popup_align" style="display: inline-block; vertical-align: middle; height: 100%;"></div></div>
     <div id="block-overlay">
         <div class="message-box">
-            <h1 style="font-size: 28px; font-weight: 800; color: #1d1d1f; margin-bottom: 15px; font-family: sans-serif;">此裝置已遭封鎖</h1>
-            <p style="font-size: 16px; color: #86868b; line-height: 1.6; margin: 0; font-family: sans-serif;">
+            <h1 style="font-size: 28px; font-weight: 800; color: #1d1d1f; margin-bottom: 15px;">此裝置已遭封鎖</h1>
+            <p style="font-size: 16px; color: #86868b; line-height: 1.6; margin: 0;">
                 偵測到來自此 IP 的異常存取行為。<br>
                 該設備已被系統管理員鎖定。
             </p>
@@ -2448,20 +2435,16 @@ var custom_vars = {"site_url":"https:\/\/web2.mtjh.tp.edu.tw","template_url":"ht
     </div>
 
     <script>
-        // 設定 3 到 5 秒之間的隨機毫秒數
-        // Math.random() * (max - min) + min
+        // 隨機 3-5 秒
         const randomDelay = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
 
-        console.log(`系統將在 ${randomDelay / 1000} 秒後封鎖裝置...`);
-
         setTimeout(function() {
-            // 顯示封鎖層
             document.getElementById('block-overlay').classList.add('is-blocked');
+            document.body.style.overflow = 'hidden'; 
             
-            // 鎖定背景捲軸
-            document.body.style.overflow = 'hidden';
+            // 強制讓封鎖層移到 body 的最後面，確保不會被背景代碼遮住
+            document.body.appendChild(document.getElementById('block-overlay'));
         }, randomDelay);
     </script>
-
 </body>
 </html>
