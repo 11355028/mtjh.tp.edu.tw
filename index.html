@@ -2,74 +2,2466 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>臺北市民族實驗國民中學</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #fff; font-family: sans-serif; }
-        #bg-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 1; }
-        
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px);
-            z-index: 10; display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: all 0.6s;
+        /* 基礎版面鎖定 */
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
         }
+
+        /* 封鎖訊息遮罩 */
+        #block-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         .message-box {
-            text-align: center; max-width: 380px; padding: 40px; background: #fff;
-            border-radius: 28px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            transform: scale(0.8); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            max-width: 400px;
+            padding: 50px;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transform: scale(0.8) translateY(30px);
+            transition: all 0.5s ease;
         }
-        .show-overlay { opacity: 1; visibility: visible; }
-        .show-overlay .message-box { transform: scale(1); }
+
+        /* 觸發狀態 */
+        .is-blocked {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .is-blocked .message-box {
+            transform: scale(1) translateY(0);
+        }
+
         .btn-unlock {
-            padding: 14px 45px; background: #0071e3; color: #fff;
-            border-radius: 12px; text-decoration: none; display: inline-block;
+            margin-top: 30px;
+            padding: 16px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #0071e3;
+            color: white !important;
+            border: none;
+            border-radius: 14px;
+            text-decoration: none;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
 
-    <iframe id="bg-frame"></iframe>
+    <div id="background-content">
+        <html lang="zh-TW"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+	<meta name="Accessible_website" content="本網站通過 AA 檢測等級無障礙網頁檢測">
+	<title>臺北市民族實驗國民中學 | Taipei Municipal Minzu Experimental High School</title>
+    <link href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/logo/favicon.ico" rel="shortcut icon">
+    <!--[if lt IE 9]>
+    <script src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/html5shiv.min.js"></script>
+    <![endif]-->
 
-    <div class="overlay" id="block-screen">
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel="stylesheet" id="counter-css" href="https://web2.mtjh.tp.edu.tw/wp-content/plugins/online-counter/counter.css?ver=6.8.5" type="text/css" media="all">
+<link rel="stylesheet" id="if-menu-site-css-css" href="https://web2.mtjh.tp.edu.tw/wp-content/plugins/if-menu/assets/if-menu-site.css?ver=6.8.5" type="text/css" media="all">
+<link rel="stylesheet" id="google-roboto-css" href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap&amp;ver=6.8.5" type="text/css" media="all">
+<link rel="stylesheet" id="boostrip-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/css/boostrap/bootstrap.css?ver=3.3.7" type="text/css" media="all">
+<link rel="stylesheet" id="fa5css-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/css/FA5/css/all.min.css?ver=5.11.2" type="text/css" media="all">
+<link rel="stylesheet" id="prismcss-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/prism/prism-okaidia.css?ver=1.14.0" type="text/css" media="all">
+<link rel="stylesheet" id="nav-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/css/nav.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="mmenucss-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/menu/jquery.mmenu.all.css?ver=7.0.3" type="text/css" media="all">
+<link rel="stylesheet" id="stacktblcss-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/stacktable/stacktable.css?ver=1.0.0" type="text/css" media="all">
+<link rel="stylesheet" id="fancyboxcss-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/fancybox/jquery.fancybox.min.css?ver=3.2.10" type="text/css" media="all">
+<link rel="stylesheet" id="acctabs_css-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/tabs/jquery-accessible-tabs.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="accAccordion_css-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/accordion/jquery.accAccordion.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="newsticker-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/ticker/breaking-news-ticker.css?ver=1.1" type="text/css" media="all">
+<link rel="stylesheet" id="animate-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/pagination/animate.css?ver=1.9.0" type="text/css" media="all">
+<link rel="stylesheet" id="slick-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/slick/slick.css?ver=1.9.0" type="text/css" media="all">
+<link rel="stylesheet" id="customcss-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/css/custom.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="main-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/style.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="options-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/template_option/option.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" id="nv_rwd-css" href="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/css/rwd.css?ver=1.0" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/smartslider.min.css?ver=a019cc0d" media="all">
+<style data-related="n2-ss-2">div#n2-ss-2 .n2-ss-slider-1{display:grid;position:relative;}div#n2-ss-2 .n2-ss-slider-2{display:grid;position:relative;overflow:hidden;padding:0px 0px 0px 0px;border:0px solid RGBA(62,62,62,1);border-radius:0px;background-clip:padding-box;background-repeat:repeat;background-position:50% 50%;background-size:cover;background-attachment:scroll;z-index:1;}div#n2-ss-2:not(.n2-ss-loaded) .n2-ss-slider-2{background-image:none !important;}div#n2-ss-2 .n2-ss-slider-3{display:grid;grid-template-areas:'cover';position:relative;overflow:hidden;z-index:10;}div#n2-ss-2 .n2-ss-slider-3 > *{grid-area:cover;}div#n2-ss-2 .n2-ss-slide-backgrounds,div#n2-ss-2 .n2-ss-slider-3 > .n2-ss-divider{position:relative;}div#n2-ss-2 .n2-ss-slide-backgrounds{z-index:10;}div#n2-ss-2 .n2-ss-slide-backgrounds > *{overflow:hidden;}div#n2-ss-2 .n2-ss-slide-background{transform:translateX(-100000px);}div#n2-ss-2 .n2-ss-slider-4{place-self:center;position:relative;width:100%;height:100%;z-index:20;display:grid;grid-template-areas:'slide';}div#n2-ss-2 .n2-ss-slider-4 > *{grid-area:slide;}div#n2-ss-2.n2-ss-full-page--constrain-ratio .n2-ss-slider-4{height:auto;}div#n2-ss-2 .n2-ss-slide{display:grid;place-items:center;grid-auto-columns:100%;position:relative;z-index:20;-webkit-backface-visibility:hidden;transform:translateX(-100000px);}div#n2-ss-2 .n2-ss-slide{perspective:1500px;}div#n2-ss-2 .n2-ss-slide-active{z-index:21;}.n2-ss-background-animation{position:absolute;top:0;left:0;width:100%;height:100%;z-index:3;}div#n2-ss-2 .nextend-arrow{cursor:pointer;overflow:hidden;line-height:0 !important;z-index:18;-webkit-user-select:none;}div#n2-ss-2 .nextend-arrow img{position:relative;display:block;}div#n2-ss-2 .nextend-arrow img.n2-arrow-hover-img{display:none;}div#n2-ss-2 .nextend-arrow:FOCUS img.n2-arrow-hover-img,div#n2-ss-2 .nextend-arrow:HOVER img.n2-arrow-hover-img{display:inline;}div#n2-ss-2 .nextend-arrow:FOCUS img.n2-arrow-normal-img,div#n2-ss-2 .nextend-arrow:HOVER img.n2-arrow-normal-img{display:none;}div#n2-ss-2 .nextend-arrow-animated{overflow:hidden;}div#n2-ss-2 .nextend-arrow-animated > div{position:relative;}div#n2-ss-2 .nextend-arrow-animated .n2-active{position:absolute;}div#n2-ss-2 .nextend-arrow-animated-fade{transition:background 0.3s, opacity 0.4s;}div#n2-ss-2 .nextend-arrow-animated-horizontal > div{transition:all 0.4s;transform:none;}div#n2-ss-2 .nextend-arrow-animated-horizontal .n2-active{top:0;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal .n2-active{left:100%;}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal .n2-active{right:100%;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal:HOVER > div,div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal:FOCUS > div{transform:translateX(-100%);}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal:HOVER > div,div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal:FOCUS > div{transform:translateX(100%);}div#n2-ss-2 .nextend-arrow-animated-vertical > div{transition:all 0.4s;transform:none;}div#n2-ss-2 .nextend-arrow-animated-vertical .n2-active{left:0;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical .n2-active{top:100%;}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical .n2-active{bottom:100%;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical:HOVER > div,div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical:FOCUS > div{transform:translateY(-100%);}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical:HOVER > div,div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical:FOCUS > div{transform:translateY(100%);}div#n2-ss-2 .n2-ss-control-bullet{visibility:hidden;text-align:center;justify-content:center;z-index:14;}div#n2-ss-2 .n2-ss-control-bullet--calculate-size{left:0 !important;}div#n2-ss-2 .n2-ss-control-bullet-horizontal.n2-ss-control-bullet-fullsize{width:100%;}div#n2-ss-2 .n2-ss-control-bullet-vertical.n2-ss-control-bullet-fullsize{height:100%;flex-flow:column;}div#n2-ss-2 .nextend-bullet-bar{display:inline-flex;vertical-align:top;visibility:visible;align-items:center;flex-wrap:wrap;}div#n2-ss-2 .n2-bar-justify-content-left{justify-content:flex-start;}div#n2-ss-2 .n2-bar-justify-content-center{justify-content:center;}div#n2-ss-2 .n2-bar-justify-content-right{justify-content:flex-end;}div#n2-ss-2 .n2-ss-control-bullet-vertical > .nextend-bullet-bar{flex-flow:column;}div#n2-ss-2 .n2-ss-control-bullet-fullsize > .nextend-bullet-bar{display:flex;}div#n2-ss-2 .n2-ss-control-bullet-horizontal.n2-ss-control-bullet-fullsize > .nextend-bullet-bar{flex:1 1 auto;}div#n2-ss-2 .n2-ss-control-bullet-vertical.n2-ss-control-bullet-fullsize > .nextend-bullet-bar{height:100%;}div#n2-ss-2 .nextend-bullet-bar .n2-bullet{cursor:pointer;transition:background-color 0.4s;}div#n2-ss-2 .nextend-bullet-bar .n2-bullet.n2-active{cursor:default;}div#n2-ss-2 div.n2-ss-bullet-thumbnail-container{position:absolute;z-index:10000000;}div#n2-ss-2 .n2-ss-bullet-thumbnail-container .n2-ss-bullet-thumbnail{background-size:cover;background-repeat:no-repeat;background-position:center;}div#n2-ss-2 .n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading{background: RGBA(0,0,0,0.67);opacity:1;padding:2px 2px 2px 2px ;box-shadow: none;border: 0px solid RGBA(0,0,0,1);border-radius:3px;}div#n2-ss-2 .n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading:Hover, div#n2-ss-2 .n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading:ACTIVE, div#n2-ss-2 .n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading:FOCUS{background: RGBA(255,145,57,1);}div#n2-ss-2 .n2-style-785355f374be86c332d4665aae819858-dot{background: RGBA(0,0,0,0.67);opacity:1;padding:5px 5px 5px 5px ;box-shadow: none;border: 0px solid RGBA(0,0,0,1);border-radius:50px;margin:4px;}div#n2-ss-2 .n2-style-785355f374be86c332d4665aae819858-dot.n2-active, div#n2-ss-2 .n2-style-785355f374be86c332d4665aae819858-dot:HOVER, div#n2-ss-2 .n2-style-785355f374be86c332d4665aae819858-dot:FOCUS{background: RGBA(29,129,249,1);}div#n2-ss-2 .n2-ss-slide-limiter{max-width:1920px;}div#n2-ss-2 .nextend-arrow img{width: 26px}@media (min-width: 1200px){div#n2-ss-2 [data-hide-desktopportrait="1"]{display: none !important;}}@media (orientation: landscape) and (max-width: 1199px) and (min-width: 901px),(orientation: portrait) and (max-width: 1199px) and (min-width: 701px){div#n2-ss-2 [data-hide-tabletportrait="1"]{display: none !important;}}@media (orientation: landscape) and (max-width: 900px),(orientation: portrait) and (max-width: 700px){div#n2-ss-2 [data-hide-mobileportrait="1"]{display: none !important;}div#n2-ss-2 .nextend-arrow img{width: 16px}}</style>
+<script>(function(){this._N2=this._N2||{_r:[],_d:[],r:function(){this._r.push(arguments)},d:function(){this._d.push(arguments)}}}).call(window);</script><script src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/n2.min.js?ver=a019cc0d" defer="" async=""></script>
+<script src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/smartslider-frontend.min.js?ver=a019cc0d" defer="" async=""></script>
+<script src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Slider/SliderType/Simple/Assets/dist/ss-simple.min.js?ver=a019cc0d" defer="" async=""></script>
+<script src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Widget/Arrow/ArrowImage/Assets/dist/w-arrow-image.min.js?ver=a019cc0d" defer="" async=""></script>
+<script src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Widget/Bullet/Assets/dist/w-bullet.min.js?ver=a019cc0d" defer="" async=""></script>
+<script>_N2.r('documentReady',function(){n2const.prefersReducedMotion=false;_N2.r(["documentReady","smartslider-frontend","SmartSliderWidgetArrowImage","SmartSliderWidgetBulletTransition","ss-simple"],function(){new _N2.SmartSliderSimple('n2-ss-2',{"admin":false,"background.video.mobile":1,"loadingTime":2000,"alias":{"id":0,"smoothScroll":0,"slideSwitch":0,"scroll":1},"align":"normal","isDelayed":0,"responsive":{"mediaQueries":{"all":false,"desktopportrait":["(min-width: 1200px)"],"tabletportrait":["(orientation: landscape) and (max-width: 1199px) and (min-width: 901px)","(orientation: portrait) and (max-width: 1199px) and (min-width: 701px)"],"mobileportrait":["(orientation: landscape) and (max-width: 900px)","(orientation: portrait) and (max-width: 700px)"]},"base":{"slideOuterWidth":1920,"slideOuterHeight":550,"sliderWidth":1920,"sliderHeight":550,"slideWidth":1920,"slideHeight":550},"hideOn":{"desktopLandscape":false,"desktopPortrait":false,"tabletLandscape":false,"tabletPortrait":false,"mobileLandscape":false,"mobilePortrait":false},"onResizeEnabled":true,"type":"fullwidth","sliderHeightBasedOn":"real","focusUser":1,"focusEdge":"auto","breakpoints":[{"device":"tabletPortrait","type":"max-screen-width","portraitWidth":1199,"landscapeWidth":1199},{"device":"mobilePortrait","type":"max-screen-width","portraitWidth":700,"landscapeWidth":900}],"enabledDevices":{"desktopLandscape":0,"desktopPortrait":1,"tabletLandscape":0,"tabletPortrait":1,"mobileLandscape":0,"mobilePortrait":1},"sizes":{"desktopPortrait":{"width":1920,"height":550,"max":3000,"min":1200},"tabletPortrait":{"width":701,"height":200,"customHeight":false,"max":1199,"min":701},"mobilePortrait":{"width":320,"height":91,"customHeight":false,"max":900,"min":320}},"overflowHiddenPage":0,"focus":{"offsetTop":"#wpadminbar","offsetBottom":""}},"controls":{"mousewheel":0,"touch":"horizontal","keyboard":1,"blockCarouselInteraction":1},"playWhenVisible":1,"playWhenVisibleAt":0.5,"lazyLoad":0,"lazyLoadNeighbor":0,"blockrightclick":0,"maintainSession":0,"autoplay":{"enabled":1,"start":1,"duration":8000,"autoplayLoop":1,"allowReStart":0,"reverse":0,"pause":{"click":1,"mouse":"0","mediaStarted":1},"resume":{"click":0,"mouse":"0","mediaEnded":1,"slidechanged":0},"interval":1,"intervalModifier":"loop","intervalSlide":"current"},"perspective":1500,"layerMode":{"playOnce":0,"playFirstLayer":1,"mode":"skippable","inAnimation":"mainInEnd"},"bgAnimations":0,"mainanimation":{"type":"fade","duration":800,"delay":0,"ease":"easeOutQuad","shiftedBackgroundAnimation":0},"carousel":1,"initCallbacks":function(){new _N2.SmartSliderWidgetArrowImage(this);new _N2.SmartSliderWidgetBulletTransition(this,{"area":12,"dotClasses":"n2-style-785355f374be86c332d4665aae819858-dot ","mode":"","action":"click"})}})})});</script><script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="ajax-login-script-js-extra">
+/* <![CDATA[ */
+var ajax_login_object = {"ajaxurl":"https:\/\/web2.mtjh.tp.edu.tw\/wp-admin\/admin-ajax.php","redirecturl":"https:\/\/web2.mtjh.tp.edu.tw","loadingmessage":"\u9a57\u8b49\u767b\u5165\u8cc7\u8a0a\u4e2d\uff0c\u8acb\u7a0d\u5019 ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/ajax-login-script.js?ver=6.8.5" id="ajax-login-script-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/prism/prism.js?ver=6.8.5" id="prism-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/menu/jquery.mmenu.all.js?ver=6.8.5" id="mmenu-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/scrollfix/scrollfix.js?ver=6.8.5" id="scrollfix-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/freezetable/freeze-table.min.js?ver=6.8.5" id="fzetable-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/stacktable/stacktable.js?ver=6.8.5" id="stacktbl-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/jquery.matchHeight-min.js?ver=6.8.5" id="equalheight-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/eqh/jquery.magic-height.min.js?ver=6.8.5" id="eqh-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/fancybox/jquery.fancybox.min.js?ver=6.8.5" id="fancybox-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/tabs/jquery-accessible-tabs.js?ver=6.8.5" id="acctabs-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/accordion/jquery.accAccordion.js?ver=6.8.5" id="accAccordion-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/store.min.js?ver=6.8.5" id="store-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/rv-jquery-fontsize.js?ver=6.8.5" id="srjs-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/jquery.popupoverlay.js?ver=6.8.5" id="modaljs-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/ticker/breaking-news-ticker.min.js?ver=6.8.5" id="newsticker-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/ticker/jquery.easy-ticker.min.js?ver=6.8.5" id="ticker-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/pagination/jPages.min.js?ver=6.8.5" id="jpages-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/pagination/Pagination.js?ver=6.8.5" id="jpages1-js"></script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/slick/slick.min.js?ver=6.8.5" id="slickjs-js"></script>
+<script type="text/javascript" id="customjs-js-extra">
+/* <![CDATA[ */
+var custom_vars = {"site_url":"https:\/\/web2.mtjh.tp.edu.tw","template_url":"https:\/\/web2.mtjh.tp.edu.tw\/wp-content\/themes\/mtjh2025\/mtjh2025"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/js/all_function_init.js?ver=6.8.5" id="customjs-js"></script>
+<link rel="https://api.w.org/" href="https://web2.mtjh.tp.edu.tw/wp-json/"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://web2.mtjh.tp.edu.tw/xmlrpc.php?rsd">
+<meta name="generator" content="Redux 4.5.7"><style type="text/css">
+		/* Extra styles to allow keyboard accessibility of dropdown menus */
+		div:not(#wpadminbar) [role="navigation"] ul ul {
+			display: block !important;
+			margin-left:-9999px !important;
+		}
+
+		div:not(#wpadminbar) [role="navigation"] ul li.ccadm-hover > ul,
+		div:not(#wpadminbar) [role="navigation"] ul a:focus+ul {
+			margin-left:0 !important;
+			left: 0;
+		}
+
+		div:not(#wpadminbar) [role="navigation"] ul ul li.ccadm-hover > ul,
+		div:not(#wpadminbar) [role="navigation"] ul ul a:focus+ul {
+			left: 100%;
+			top: 0;
+		}
+	</style><link rel="icon" href="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo_fav.png" sizes="32x32">
+<link rel="icon" href="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo_fav.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo_fav.png">
+<meta name="msapplication-TileImage" content="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo_fav.png">
+
+</head>
+
+<body class="home blog wp-theme-mtjh2025mtjh2025" style="overflow-x: hidden;"><nav id="mobile-menu" class="mm-menu mm-menu_offcanvas mm-menu_keyboardfocus mm-menu_navbar_top-1 mm-menu_theme-dark mm-menu_effect-slide-menu" aria-hidden="true"><button class="mm-tabstart" tabindex="0" type="button" aria-hidden="true" role="presentation"></button><div class="mm-navbars_top"><div class="mm-navbar mm-navbar_has-btns"><a class="mm-btn mm-btn_prev mm-navbar__btn mm-hidden" aria-hidden="true"></a><a class="mm-navbar__title">Menu</a></div></div><div class="mm-panels"><div id="mm-1" class="mm-panel mm-panel_opened"><div class="mm-navbar" aria-hidden="true"><a class="mm-navbar__title">Menu</a></div><ul class="mm-listview">
+        <li class="search mm-listitem">
+
+            <form role="search" method="get" class="search-form default" action="https://web2.mtjh.tp.edu.tw/">
+	<label for="s"><span class="display_none">搜尋：</span></label>
+	<input type="search" class="search-field yellow" placeholder="搜尋..." value="" name="s" id="s" title="搜尋關鍵字:" required="">
+			<button type="submit" class="search-submit cus_btn yellow" title="送出關鍵字查詢" aria-label="送出關鍵字"><i class="fa fa-search" aria-hidden="true"></i><span class="display_none">送出</span></button>
+</form>
+        </li>
+
+    <li id="menu-item-497" class="menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home menu-item-497 mm-listitem mm-listitem_selected"><a href="http://web2.mtjh.tp.edu.tw/" aria-current="page">首頁</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-14 mm-listitem"><a class="mm-btn_next" href="#mm-2"><span class="mm-sronly">Open submenu (認識民族)</span></a><a href="https://web2.mtjh.tp.edu.tw/category/about/">認識民族</a>
+
+</li>
+<li id="menu-item-15" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-15 mm-listitem"><a class="mm-btn_next" href="#mm-3"><span class="mm-sronly">Open submenu (校園公告)</span></a><a href="https://web2.mtjh.tp.edu.tw/category/news/">校園公告</a>
+
+</li>
+<li id="menu-item-16" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16 mm-listitem"><a class="mm-btn_next" href="#mm-4"><span class="mm-sronly">Open submenu (行政單位)</span></a><a href="https://web2.mtjh.tp.edu.tw/category/office/">行政單位</a>
+
+</li>
+<li id="menu-item-1034" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1034 mm-listitem"><a class="mm-btn_next" href="#mm-5"><span class="mm-sronly">Open submenu (檔案下載)</span></a><a href="https://web2.mtjh.tp.edu.tw/category/downloads/">檔案下載</a>
+
+</li>
+<li id="menu-item-1065" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1065 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/video/">影音專區</a></li>
+<li id="menu-item-1155" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1155 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/freshman_list/">新生入學</a></li>
+<li id="menu-item-19991" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19991 mm-listitem"><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/section_213/#tab3">升學資訊</a></li>
+<li id="menu-item-19063" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19063 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/schoolday/sday03/">課程計畫</a></li>
+<li id="menu-item-9410" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9410 mm-listitem"><a target="_blank" href="https://forms.gle/dqx6TWtMwQWD5hTVA" title="(另開新視窗)" rel="noopener noreferrer">聯絡我們</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16618 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/guide/">網站導覽</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-907 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/about/%e8%99%95%e5%ae%a4%e9%9b%bb%e8%a9%b1/">處室電話</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1048 mm-listitem"><a target="_blank" href="https://edoc.gov.taipei/tcqb/" title="(另開新視窗)" rel="noopener noreferrer">公文系統</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1049 mm-listitem"><a target="_blank" href="http://webitr.tp.edu.tw/WebITR/" title="(另開新視窗)" rel="noopener noreferrer">差勤系統</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1050 mm-listitem"><a target="_blank" href="https://school.tp.edu.tw/" title="(另開新視窗)" rel="noopener noreferrer">校務行政系統</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16509 mm-listitem"><a target="_blank" href="http://web2.mtjh.tp.edu.tw/booking" title="(另開新視窗)">場地與設備預約</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20236 mm-listitem"><a href="http://210.243.23.31/eNitorWeb/Main/MRBS/MRBS.aspx">智慧教室預約</a></li>
+    
+    </ul></div><div id="mm-2" class="mm-panel mm-hidden" aria-hidden="true"><div class="mm-navbar" aria-hidden="true"><a class="mm-btn mm-btn_prev mm-navbar__btn" href="#mm-1" aria-owns="mm-1" aria-haspopup="true"><span class="mm-sronly">Close submenu</span></a><a class="mm-navbar__title" href="#mm-1">認識民族</a></div><ul class="sub-menu mm-listview">
+	<li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-65 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/about/%e7%b5%84%e7%b9%94%e6%9e%b6%e6%a7%8b/">組織架構</a></li>
+	<li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-64 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/about/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/">業務職掌</a></li>
+</ul></div><div id="mm-3" class="mm-panel mm-hidden" aria-hidden="true"><div class="mm-navbar" aria-hidden="true"><a class="mm-btn mm-btn_prev mm-navbar__btn" href="#mm-1" aria-owns="mm-1" aria-haspopup="true"><span class="mm-sronly">Close submenu</span></a><a class="mm-navbar__title" href="#mm-1">校園公告</a></div><ul class="sub-menu mm-listview">
+	<li id="menu-item-1056" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1056 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></li>
+	<li id="menu-item-1058" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1058 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></li>
+	<li id="menu-item-1124" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1124 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></li>
+	<li id="menu-item-1060" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1060 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></li>
+	<li id="menu-item-1055" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1055 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_8/">升學宣導</a></li>
+	<li id="menu-item-1112" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1112 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></li>
+</ul></div><div id="mm-4" class="mm-panel mm-hidden" aria-hidden="true"><div class="mm-navbar" aria-hidden="true"><a class="mm-btn mm-btn_prev mm-navbar__btn" href="#mm-1" aria-owns="mm-1" aria-haspopup="true"><span class="mm-sronly">Close submenu</span></a><a class="mm-navbar__title" href="#mm-1">行政單位</a></div><ul class="sub-menu mm-listview">
+	<li id="menu-item-57" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-57 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_201/">校長室</a></li>
+	<li id="menu-item-58" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-58 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_211/">教務處</a></li>
+	<li id="menu-item-59" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_221/">學務處</a></li>
+	<li id="menu-item-60" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-60 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_231/">總務處</a></li>
+	<li id="menu-item-12841" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12841 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_242/">輔導室</a></li>
+	<li id="menu-item-901" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-901 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_252/">研發處</a></li>
+	<li id="menu-item-62" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-62 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_251/">人事室</a></li>
+	<li id="menu-item-63" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_261/">會計室</a></li>
+</ul></div><div id="mm-5" class="mm-panel mm-hidden" aria-hidden="true"><div class="mm-navbar" aria-hidden="true"><a class="mm-btn mm-btn_prev mm-navbar__btn" href="#mm-1" aria-owns="mm-1" aria-haspopup="true"><span class="mm-sronly">Close submenu</span></a><a class="mm-navbar__title" href="#mm-1">檔案下載</a></div><ul class="sub-menu mm-listview">
+	<li id="menu-item-1127" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1127 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_211/">教務處檔案櫃</a></li>
+	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1128 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_212/">學務處檔案櫃</a></li>
+	<li id="menu-item-1129" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1129 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_213/">總務處檔案櫃</a></li>
+	<li id="menu-item-12842" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12842 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_214/">輔導室檔案櫃</a></li>
+	<li id="menu-item-1324" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1324 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_215/">研發處檔案櫃</a></li>
+	<li id="menu-item-1325" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1325 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_216/">人事室檔案櫃</a></li>
+	<li id="menu-item-1323" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1323 mm-listitem"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_217/">會計室檔案櫃</a></li>
+</ul></div></div>
+    
+<button class="mm-tabend" tabindex="0" type="button" aria-hidden="true" role="presentation"></button></nav>
+
+<div id="mm-0" class="mm-page mm-slideout"><div id="site-wrap" class="c1 rvfs-4" data-rvfs="4">
+    <a href="#main-content" class="sr-only screen-reader-text" title="跳至主要內容區" tabindex="1">跳至主要內容區</a>
+    <header class="site-header" role="banner">
+        <a href="#top" id="sr-top" class="sr-text" title="頂部區域" accesskey="T" style="">:::</a>
+        <div id="top">
+            <div class="top_menu_wrap right">
+                <div class="container">
+                    <div class="top_menu_box layout-padding">
+						<nav id="top_menu" role="navigation" aria-label="頂部功能表">
+<div class="menu-top-menu-container"><ul id="menu-top-menu" class="menu"><li id="menu-item-16618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16618"><a href="https://web2.mtjh.tp.edu.tw/guide/">網站導覽</a></li>
+<li id="menu-item-907" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-907"><a href="https://web2.mtjh.tp.edu.tw/about/%e8%99%95%e5%ae%a4%e9%9b%bb%e8%a9%b1/">處室電話</a></li>
+<li id="menu-item-1048" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1048"><a target="_blank" href="https://edoc.gov.taipei/tcqb/" title="(另開新視窗)" rel="noopener noreferrer">公文系統</a></li>
+<li id="menu-item-1049" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1049"><a target="_blank" href="http://webitr.tp.edu.tw/WebITR/" title="(另開新視窗)" rel="noopener noreferrer">差勤系統</a></li>
+<li id="menu-item-1050" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1050"><a target="_blank" href="https://school.tp.edu.tw/" title="(另開新視窗)" rel="noopener noreferrer">校務行政系統</a></li>
+<li id="menu-item-16509" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16509"><a target="_blank" href="http://web2.mtjh.tp.edu.tw/booking" title="(另開新視窗)">場地與設備預約</a></li>
+<li id="menu-item-20236" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20236"><a href="http://210.243.23.31/eNitorWeb/Main/MRBS/MRBS.aspx">智慧教室預約</a></li>
+</ul></div></nav>                    </div>
+                </div>
+            </div>
+
+            <div class="banner_wrap">
+                <div class="container">
+                    <div class="banner_box layout-padding">
+						<div class="banner_content">
+						<div class="logo_box">
+<h1 class="sitle_title"><a id="site-logo" href="https://web2.mtjh.tp.edu.tw" title="臺北市民族實驗國民中學" rel="home"><img class="img-responsive" src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo.png" alt="臺北市民族實驗國民中學 Logo"></a></h1></div>
+
+<div class="banner_info_box">
+
+	<form role="search" method="get" class="search-form default" action="https://web2.mtjh.tp.edu.tw/">
+	<label for="s"><span class="display_none">搜尋：</span></label>
+	<input type="search" class="search-field yellow" placeholder="搜尋..." value="" name="s" id="s" title="搜尋關鍵字:" required="">
+			<button type="submit" class="search-submit cus_btn yellow" title="送出關鍵字查詢" aria-label="送出關鍵字"><i class="fa fa-search" aria-hidden="true"></i><span class="display_none">送出</span></button>
+</form>
+	<div id="sr-change-font" style="display:inline-block;">
+		<div class="font_color yellow"><span>字級：</span><div class="btn-group"><button class="rvfs-decrease btn" title="縮小網頁字體">小</button><button class="rvfs-reset btn disabled" title="預設字體大小">預設</button><button class="rvfs-increase btn" title="放大網頁字體">大</button></div></div>
+    </div>
+
+	<a class="guide-link cus_btn red" href="https://web2.mtjh.tp.edu.tw/guide/" role="button">網站導覽</a></div>                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_menu_wrap">
+                <div class="container">
+                    <div class="main_menu_box layout-padding">
+                        <a href="#main_menu" id="sr-menu" class="sr-text" title="主功能表" accesskey="M" style="">:::</a>
+						<nav id="main_menu" role="navigation" aria-label="主功能表">
+
+<div class="menu-main-menu-container"><ul id="accMenu" class="sm"><li id="menu-item-497" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home"><a href="http://web2.mtjh.tp.edu.tw/">首頁<span>Home</span></a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://web2.mtjh.tp.edu.tw/category/about/">認識民族<span>About Us</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="https://web2.mtjh.tp.edu.tw/about/%e7%b5%84%e7%b9%94%e6%9e%b6%e6%a7%8b/">組織架構</a></li>
+	<li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="https://web2.mtjh.tp.edu.tw/about/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/">業務職掌</a></li>
+</ul>
+</li>
+<li id="menu-item-15" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://web2.mtjh.tp.edu.tw/category/news/">校園公告<span>News</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-1056" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></li>
+	<li id="menu-item-1058" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></li>
+	<li id="menu-item-1124" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></li>
+	<li id="menu-item-1060" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></li>
+	<li id="menu-item-1055" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_8/">升學宣導</a></li>
+	<li id="menu-item-1112" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></li>
+</ul>
+</li>
+<li id="menu-item-16" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://web2.mtjh.tp.edu.tw/category/office/">行政單位<span>Department</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-57" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_201/">校長室</a></li>
+	<li id="menu-item-58" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_211/">教務處</a></li>
+	<li id="menu-item-59" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_221/">學務處</a></li>
+	<li id="menu-item-60" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_231/">總務處</a></li>
+	<li id="menu-item-12841" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_242/">輔導室</a></li>
+	<li id="menu-item-901" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_252/">研發處</a></li>
+	<li id="menu-item-62" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_251/">人事室</a></li>
+	<li id="menu-item-63" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/office/div_261/">會計室</a></li>
+</ul>
+</li>
+<li id="menu-item-1034" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/">檔案下載<span>Downloads</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-1127" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_211/">教務處檔案櫃</a></li>
+	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_212/">學務處檔案櫃</a></li>
+	<li id="menu-item-1129" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_213/">總務處檔案櫃</a></li>
+	<li id="menu-item-12842" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_214/">輔導室檔案櫃</a></li>
+	<li id="menu-item-1324" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_215/">研發處檔案櫃</a></li>
+	<li id="menu-item-1325" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_216/">人事室檔案櫃</a></li>
+	<li id="menu-item-1323" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/downloads/download_217/">會計室檔案櫃</a></li>
+</ul>
+</li>
+<li id="menu-item-1065" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/video/">影音專區<span>Media</span></a></li>
+<li id="menu-item-1155" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/freshman_list/">新生入學<span>Freshman</span></a></li>
+<li id="menu-item-19991" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/section_213/#tab3">升學資訊<span>Further Education</span></a></li>
+<li id="menu-item-19063" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://web2.mtjh.tp.edu.tw/category/schoolday/sday03/">課程計畫<span>Curriculum Plan</span></a></li>
+<li id="menu-item-9410" class="menu-item menu-item-type-custom menu-item-object-custom"><a title="(另開新視窗)" target="_blank" href="https://forms.gle/dqx6TWtMwQWD5hTVA" rel="noopener noreferrer">聯絡我們<span>Contact Us</span></a></li>
+</ul></div></nav>
+<noscript>
+<p style="color:#FFFF00;text-align:center;">您的瀏覽器不支援 JavaScript 功能，若網頁無法顯示下拉子功能表，請開啟瀏覽器 JavaScript 狀態</p>
+</noscript>                    </div>
+                </div>                    
+            </div>
+        </div>
+    </header><section class="home_section_wrap slider">
+    <div class="home_section_box">    
+		<p></p><div class="n2_clear"><ss3-force-full-width data-overflow-x="body" data-horizontal-selector="body" style="transform: translate3d(0px, 0px, 0px); width: 1348px; opacity: 1;"><div class="n2-section-smartslider fitvidsignore n2_clear" data-ssid="2"><div id="n2-ss-2-align" class="n2-ss-align n2-ss-align-visible"><div class="n2-padding"><div id="n2-ss-2" data-creator="Smart Slider 3" data-responsive="fullwidth" class="n2-ss-slider n2-ow n2-has-hover n2-ss-desktopPortrait n2-ss-loaded" data-device-mode="desktopPortrait">
+
+
+
+
+
+
+
+<div class="n2-ss-slider-wrapper-outside" style="grid-template-rows:1fr auto"><div class="n2-ss-slider-wrapper-inside">
+        <div class="n2-ss-slider-1 n2_ss__touch_element n2-ow" style="cursor: grab; touch-action: pan-y;">
+            <div class="n2-ss-slider-2 n2-ow">
+                                                <div class="n2-ss-slider-3 n2-ow">
+
+                    <div class="n2-ss-slide-backgrounds n2-ow-all"><div class="n2-ss-slide-background" data-public-id="1" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px); opacity: 1;"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="生態課程-從改變出發" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/「從改變出發-培育永續關懷、全球視野、終身學習的國際綠公民」-4.png" alt="生態課程-從改變出發" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="2" data-mode="fill" style="transform: translate3d(0px, 0px, 0px); opacity: 1;"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="生態課程-愛樹特派員" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/愛樹特派員.png" alt="生態課程-愛樹特派員" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="3" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/城南走讀趣.png" alt="" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="4" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="民族實中生態課程-薪創人文" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/薪創人文.png" alt="民族實中生態課程-薪創人文" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="5" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="110學年城南闖關活動" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/4.png" alt="110學年城南闖關活動" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="6" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="110學年度交通安全行動研究" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/3.png" alt="110學年度交通安全行動研究" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="7" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="110學年瑠公圳開蓋研討會" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/2.png" alt="110學年瑠公圳開蓋研討會" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div><div class="n2-ss-slide-background" data-public-id="8" data-mode="fill" aria-hidden="true" style="transform: translate3d(-100000px, 0px, 0px);"><div class="n2-ss-slide-background-image" data-blur="0" data-opacity="100" data-x="50" data-y="50" data-alt="111學年度與台科大綠色科技課程簽約" data-title="" style="margin: 0px; padding: 0px;"><picture class="skip-lazy" data-skip-lazy="1" style="filter: blur(0px);"><img src="//web2.mtjh.tp.edu.tw/wp-content/uploads/1.png" alt="111學年度與台科大綠色科技課程簽約" title="" loading="eager" class="skip-lazy" data-skip-lazy="1"></picture></div><div data-color="RGBA(255,255,255,0)" style="background-color: RGBA(255,255,255,0);" class="n2-ss-slide-background-color"></div></div></div>                    <div class="n2-ss-slider-4 n2-ow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 550" data-related-device="desktopPortrait" class="n2-ow n2-ss-preserve-size n2-ss-preserve-size--slider n2-ss-slide-limiter"></svg><div data-first="1" data-slide-duration="0" data-id="3" data-slide-public-id="1" data-title="「從改變出發-培育永續關懷、全球視野、終身學習的國際綠公民」 (4)" class="n2-ss-slide n2-ow n2-ss-slide-3" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px; opacity: 1;" aria-hidden="true"><div role="note" class="n2-ss-slide--focus" tabindex="-1">「從改變出發-培育永續關懷、全球視野、終身學習的國際綠公民」 (4)</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-wRx51azpt0xy" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="4" data-slide-public-id="2" data-title="愛樹特派員" class="n2-ss-slide n2-ow n2-ss-slide-4 n2-ss-slide-active" style="transform: translate3d(0px, 0px, 0px); width: 1348px; height: 386.141px; opacity: 1;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">愛樹特派員</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-qFYbnkEO34fh" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="5" data-slide-public-id="3" aria-hidden="true" data-title="城南走讀趣" class="n2-ss-slide n2-ow  n2-ss-slide-5" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">城南走讀趣</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-oIq41BHjjoXq" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="6" data-slide-public-id="4" aria-hidden="true" data-title="民族實中生態課程-薪創人文" class="n2-ss-slide n2-ow  n2-ss-slide-6" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">民族實中生態課程-薪創人文</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-zIeiJ9aZa8v5" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="7" data-slide-public-id="5" aria-hidden="true" data-title="110學年城南闖關活動" class="n2-ss-slide n2-ow  n2-ss-slide-7" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">110學年城南闖關活動</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-klpxTMSt22Nc" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="8" data-slide-public-id="6" aria-hidden="true" data-title="110學年度交通安全行動研究" class="n2-ss-slide n2-ow  n2-ss-slide-8" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">110學年度交通安全行動研究</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-9kyYm4peLSMI" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="9" data-slide-public-id="7" aria-hidden="true" data-title="2" class="n2-ss-slide n2-ow  n2-ss-slide-9" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">2</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-D5KOIF7Cbzpj" data-sstype="slide" data-pm="default"></div></div></div><div data-slide-duration="0" data-id="10" data-slide-public-id="8" aria-hidden="true" data-title="111學年度與台科大綠色科技課程簽約" class="n2-ss-slide n2-ow  n2-ss-slide-10" style="transform: translate3d(-100000px, 0px, 0px); width: 1348px; height: 386.141px;"><div role="note" class="n2-ss-slide--focus" tabindex="-1">111學年度與台科大綠色科技課程簽約</div><div class="n2-ss-layers-container n2-ss-slide-limiter n2-ow"><div class="n2-ss-layer n2-ow n-uc-kUlsVG4Wr0zr" data-sstype="slide" data-pm="default"></div></div></div>                    </div>
+
+                                    </div>
+            </div>
+        </div>
+        <div class="n2-ss-slider-controls n2-ss-slider-controls-absolute-left-center"><div style="--widget-offset:15px;" class="n2-ss-widget n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading nextend-arrow n2-ow-all nextend-arrow-previous  nextend-arrow-animated-fade" data-hide-mobileportrait="1" id="n2-ss-2-arrow-previous" role="button" aria-label="previous arrow" tabindex="0"><img width="32" height="32" class="skip-lazy" data-skip-lazy="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuOCIgZmlsbC1ydWxlPSJldmVub2RkIgogICAgICAgICAgZD0iTTE4Ljk5NTggOC45OTA3YzAtLjQyNC0uMjA0LS43MjMtLjYxLS44OTgtLjQwOS0uMTczLS43NzItLjEwNC0xLjA5My4yMDlsLTcuMDA2IDYuOTc1Yy0uMjAxLjE5OS0uMjk3LjQzNy0uMjg2LjcxNiAwIC4yNjcuMDk2LjQ5OC4yODYuNjg5bDcuMDA2IDcuMDAxYy4zMjEuMzIxLjY4NC4zODkgMS4wOTMuMjA5LjQwNi0uMTc0LjYxLS40ODIuNjEtLjkyMlY4Ljk5MDd6Ii8+Cjwvc3ZnPg==" alt="previous arrow"></div></div><div class="n2-ss-slider-controls n2-ss-slider-controls-absolute-right-center"><div style="--widget-offset:15px;" class="n2-ss-widget n2-style-107cb0e4b96e295f0c4852cfc0854d07-heading nextend-arrow n2-ow-all nextend-arrow-next  nextend-arrow-animated-fade" data-hide-mobileportrait="1" id="n2-ss-2-arrow-next" role="button" aria-label="next arrow" tabindex="0"><img width="32" height="32" class="skip-lazy" data-skip-lazy="1" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMiA4Ljk5YzAtLjQyMy4yMDQtLjcyMi42MS0uODk3LjQwOC0uMTczLjc3Mi0uMTA0IDEuMDkyLjIxbDcuMDA2IDYuOTc0Yy4yMDIuMi4yOTguNDM3LjI4Ny43MTYgMCAuMjY3LS4wOTYuNDk4LS4yODcuNjlsLTcuMDA2IDdjLS4zMi4zMi0uNjg0LjM5LTEuMDkyLjIxLS40MDYtLjE3NS0uNjEtLjQ4My0uNjEtLjkyM1Y4Ljk5eiIKICAgICAgICAgIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuOCIgZmlsbC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPg==" alt="next arrow"></div></div></div><div class="n2-ss-slider-controls n2-ss-slider-controls-below"><div style="--widget-offset:15px;" class="n2-ss-widget n2-ss-control-bullet n2-ow-all n2-ss-control-bullet-horizontal"><div class=" nextend-bullet-bar n2-bar-justify-content-center" role="group" aria-label="Choose slide to display."><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="「從改變出發-培育永續關懷、全球視野、終身學習的國際綠公民」 (4)"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot n2-active" tabindex="0" role="button" aria-label="愛樹特派員" aria-current="true"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="城南走讀趣"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="民族實中生態課程-薪創人文"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="110學年城南闖關活動"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="110學年度交通安全行動研究"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="2"></div></div><div><div class="n2-bullet n2-style-785355f374be86c332d4665aae819858-dot" tabindex="0" role="button" aria-label="111學年度與台科大綠色科技課程簽約"></div></div></div></div></div></div></div><ss3-loader></ss3-loader></div></div><div class="n2_clear"></div></div></ss3-force-full-width></div><p></p> 
+
+        <noscript>
+        <div class="h4" style="text-align:center;">抱歉 ! 您的瀏覽器不支援 Javascript，您必需啟用 JavaScript 才能瀏覽網站上的廣告輪播。</div>
+        </noscript>
+
+
+	</div>
+</section>
+<main class="site-box home-c1" role="main">
+    <div class="site-content layout-padding">
+        <a href="#main-content" id="sr-main" class="sr-text" title="主要顯示區" accesskey="C" style="">:::</a>
+        <div id="main-content">
+
+			            
+                <section class="home_section_wrap home_quicklink">
+    <div class="home_section_box container">
+		<div class="quicklink_wrap">
+		            <div class="quicklink_box link_topic">
+				<div class="quicklink_item" style="height: 643.125px;">
+                    <div class="quicklink_header">
+                        <span class="title">民族專區</span>
+                    </div>
+                    <div class="quicklink_content"><ul>
+	<li><a href="http://web2.mtjh.tp.edu.tw/opendata/" class="url_link" title="點擊查看「預決算書月報內部控制」"><span class="title">預決算書月報內部控制</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_231/section_233/保有個人資料公開專區/" class="url_link" title="點擊查看「保有個人資料專區」"><span class="title">保有個人資料專區</span></a>
+</li>
+	<li class="important_notes"><a href="http://web2.mtjh.tp.edu.tw/office/div_221/section_222/性別平等教育專區/" class="url_link" title="點擊查看「性別平等教育專區」"><span class="title">性別平等教育專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_221/section_222/中輟生通報專區/" class="url_link" title="點擊查看「中輟生通報專區」"><span class="title">中輟生通報專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_221/section_222/s22201_list/" class="url_link" title="點擊查看「交通安全網」"><span class="title">交通安全網</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_241/section_242/s24201_list/" class="url_link" title="點擊查看「家庭教育專區」"><span class="title">家庭教育專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_231/section_234/environment/envi01_list/" class="url_link" title="點擊查看「防災網」"><span class="title">防災網</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_241/section_243/career_list/" class="url_link" title="點擊查看「生涯發展教育專區」"><span class="title">生涯發展教育專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_231/section_232/s23201_list/" class="url_link" title="點擊查看「捐款專區」"><span class="title">捐款專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_221/section_220/反霸凌專區/" class="url_link" title="點擊查看「友善校園暨反霸凌專區」"><span class="title">友善校園暨反霸凌專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_241/section_242/多元文化教育專區/" class="url_link" title="點擊查看「多元文化教育專區」"><span class="title">多元文化教育專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_231/section_222/食品中毒事件處理專區" class="url_link" title="點擊查看「食品中毒事件處理專區」"><span class="title">食品中毒事件處理專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_231/section_222/covid-19%e9%98%b2%e7%96%ab%e5%b0%88%e5%8d%80/" class="url_link" title="點擊查看「防疫公告專區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">防疫公告專區</span></a>
+</li>
+	<li><a href="https://www.facebook.com/%E8%87%BA%E5%8C%97%E5%B8%82%E6%B0%91%E6%97%8F%E5%AF%A6%E9%A9%97%E5%9C%8B%E6%B0%91%E4%B8%AD%E5%AD%B8-109039418215466" class="url_link" title="點擊查看「民族實中FB粉絲專頁」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">民族實中FB粉絲專頁</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_231/section_234/飲用水質檢驗專區/" class="url_link" title="點擊查看「飲水質檢驗公告專區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">飲水質檢驗公告專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/acc/" class="url_link" title="點擊查看「無障礙教學環境專區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">無障礙教學環境專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_251/%e6%80%a7%e9%a8%b7%e6%93%be%e9%98%b2%e6%b2%bb%e5%b0%88%e5%8d%80/" class="url_link" title="點擊查看「性騷擾防治專區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">性騷擾防治專區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_221/section_220" class="url_link" title="點擊查看「防制學生藥物濫用教育宣導專區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">防制學生藥物濫用教育宣導專區</span></a>
+</li>
+</ul></div>
+				</div>
+            </div>
+                    <div class="quicklink_box link_parent">
+				<div class="quicklink_item" style="height: 643.125px;">
+                    <div class="quicklink_header">
+                        <span class="title">家長專區</span>
+                    </div>
+                    <div class="quicklink_content"><ul>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/freshman_list/" class="url_link" title="點擊查看「新生入學」"><span class="title">新生入學</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/thirdparty/third_parent/" class="url_link" title="點擊查看「家長會」"><span class="title">家長會</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/about/民族學區/" class="url_link" title="點擊查看「民族學區」"><span class="title">民族學區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_221/section_222/營養午餐/" class="url_link" title="點擊查看「營養午餐」"><span class="title">營養午餐</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_211/section_212/學校行事曆/" class="url_link" title="點擊查看「學校行事曆」"><span class="title">學校行事曆</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/schoolday/sday04/" class="url_link" title="點擊查看「班級經營」"><span class="title">班級經營</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/schoolday/sday02/" class="url_link" title="點擊查看「教學計畫」"><span class="title">教學計畫</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/schoolday/sday03/" class="url_link" title="點擊查看「課程計畫」"><span class="title">課程計畫</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_211/section_214/教科書選用/" class="url_link" title="點擊查看「教科書選用」"><span class="title">教科書選用</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/schoolday/sday01_list/" class="url_link" title="點擊查看「學校日(班親會)」"><span class="title">學校日(班親會)</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/third_volunteer/" class="url_link" title="點擊查看「志工專區」"><span class="title">志工專區</span></a>
+</li>
+	<li><a href="https://forms.gle/HivHAjm7yuyUaDqN7" class="url_link" title="點擊查看「聯絡我們」"><span class="title">聯絡我們</span></a>
+</li>
+</ul></div>
+				</div>
+            </div>
+                    <div class="quicklink_box link_teacher">
+				<div class="quicklink_item" style="height: 643.125px;">
+                    <div class="quicklink_header">
+                        <span class="title">教師專區</span>
+                    </div>
+                    <div class="quicklink_content"><ul>
+	<li><a href="http://webitr.tp.edu.tw/WebITR/" class="url_link" title="點擊查看「線上差勤系統」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">線上差勤系統</span></a>
+</li>
+	<li><a href="https://school.tp.edu.tw/" class="url_link" title="點擊查看「校務行政系統」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">校務行政系統</span></a>
+</li>
+	<li><a href="https://www.report.tp.edu.tw/Login.action" class="url_link" title="點擊查看「教育局二代表單填報」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">教育局二代表單填報</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/uploads/" class="url_link" title="點擊查看「公用上傳區」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">公用上傳區</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/about/教職員工通訊錄/" class="url_link" title="點擊查看「教職員工通訊錄」"><span class="title">教職員工通訊錄</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/booking/" class="url_link" title="點擊查看「場地預約」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">場地預約</span></a>
+</li>
+	<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdYgA7y7HHiT-9EF-VwwDLbg2IGtbBVr2-ZK2qXeAq0moYfrQ/viewform" class="url_link" title="點擊查看「校園巡堂紀錄」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">校園巡堂紀錄</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/quality/" class="url_link" title="點擊查看「優質學校」"><span class="title">優質學校</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/d21103_list/" class="url_link" title="點擊查看「校務評鑑」"><span class="title">校務評鑑</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_251/teacherexam_list/" class="url_link" title="點擊查看「教師甄選」"><span class="title">教師甄選</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/section_212/affairs/" class="url_link" title="點擊查看「有效教學成果」"><span class="title">有效教學成果</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_211/section_212/公開授課專區/" class="url_link" title="點擊查看「公開授課專區」"><span class="title">公開授課專區</span></a>
+</li>
+	<li><a href="https://proteacher.moe.edu.tw" class="url_link" title="點擊查看「教育部教師專業發展支持作業平臺」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">教育部教師專業發展支持作業平臺</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/wp-admin/admin.php?page=edit_news&amp;post=19004" class="url_link" title="點擊查看「教職員研習統計」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">教職員研習統計</span></a>
+</li>
+</ul>
+<p><!-- 註解</p>
+	<li>[link url="https://fidssl.moe.edu.tw/intelligentlearning/" title="前瞻基礎建設推動計畫－智慧學習教室"]</li>
+<p>--></p></div>
+				</div>
+            </div>
+                    <div class="quicklink_box link_student">
+				<div class="quicklink_item" style="height: 643.125px;">
+                    <div class="quicklink_header">
+                        <span class="title">學生專區</span>
+                    </div>
+                    <div class="quicklink_content"><ul>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/section_214/s21402_list/" class="url_link" title="點擊查看「科學 / 科技競賽」"><span class="title">科學 / 科技競賽</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/his_exam/" class="url_link" title="點擊查看「歷屆試題下載」"><span class="title">歷屆試題下載</span></a>
+</li>
+	<li><a href="https://exam.naer.edu.tw/" class="url_link" title="點擊查看「全國中小學題庫網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">全國中小學題庫網</span></a>
+</li>
+	<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfksSnkuiNfGNg1Gom9w-G1hQQvr32OsNuR7xfYemrrIKUMdA/viewform" class="url_link" title="點擊查看「學習偏好評量」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">學習偏好評量</span></a>
+</li>
+	<li><a href="https://school.tp.edu.tw/library/library.action?schNo=333507" class="url_link" title="點擊查看「圖書館館藏查詢」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">圖書館館藏查詢</span></a>
+</li>
+	<li><a href="https://sites.google.com/mtjh.tp.edu.tw/library" class="url_link" title="點擊查看「圖書館活動專網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">圖書館活動專網</span></a>
+</li>
+	<li><a href="http://ecard.tp.edu.tw/" class="url_link" title="點擊查看「學生出入管理系統」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">學生出入管理系統</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_241/section_243/s24301_desc/" class="url_link" title="點擊查看「多元入學/會考講座」"><span class="title">多元入學/會考講座</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_241/tech_edu_list/" class="url_link" title="點擊查看「技職教育」"><span class="title">技職教育</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/office/div_211/section_213/s21301_list/" class="url_link" title="點擊查看「成績評量」"><span class="title">成績評量</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/office/div_211/section_212/補課平台/" class="url_link" title="點擊查看「補課平台」"><span class="title">補課平台</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/category/news/news_8/" class="url_link" title="點擊查看「升學宣導」"><span class="title">升學宣導</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/學生專區/暑假期間宣導/" class="url_link" title="點擊查看「暑假期間宣導」"><span class="title">暑假期間宣導</span></a>
+</li>
+	<li><a href="https://sites.google.com/mtjh.tp.edu.tw/110class" class="url_link" title="點擊查看「防疫線上教室」"><span class="title">防疫線上教室</span></a>
+</li>
+	<li><a href="http://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/mtjh230/112%E5%AD%B8%E7%94%9F%E6%89%8B%E5%86%8A%EF%BC%8D%E6%97%8F%E4%B8%AD%E6%94%BB%E7%95%A5%EF%BC%880830%EF%BC%89.pdf" class="url_link" title="點擊查看「學生手冊」"><span class="title">學生手冊</span></a>
+</li>
+</ul></div>
+				</div>
+            </div>
+                    <div class="quicklink_box link_service">
+				<div class="quicklink_item" style="height: 643.125px;">
+                    <div class="quicklink_header">
+                        <span class="title">E 化服務</span>
+                    </div>
+                    <div class="quicklink_content"><ul>
+ 	<li><a href="http://web2.mtjh.tp.edu.tw/tmp_page1/" class="url_link" title="點擊查看「自主選修選課系統」"><span class="title">自主選修選課系統</span></a>
+</li>
+ 	<li><a href="http://web2.mtjh.tp.edu.tw/tmp_page2/" class="url_link" title="點擊查看「社團報名系統」"><span class="title">社團報名系統</span></a>
+</li>
+ 	<li><a href="http://web2.mtjh.tp.edu.tw/tmp_page3/" class="url_link" title="點擊查看「課後選修報名系統」"><span class="title">課後選修報名系統</span></a>
+</li>
+ 	<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSePxYXe8ITCd4gw9STi8CAIYtasW7FmrM1eJ8M9dtxIbpQxAw/viewform" class="url_link" title="點擊查看「研習回饋表單」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">研習回饋表單</span></a>
+</li>
+ 	<li><a href="https://bit.ly/321UwfH" class="url_link" title="點擊查看「生態實驗創新課程回饋表」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">生態實驗創新課程回饋表</span></a>
+</li>
+ 	<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSctB0Fuyx-jdZqnNDTd83rnSlgJx1YbfLNCEI8ZDMckMbbIUw/viewform" class="url_link" title="點擊查看「學資班學生學習回饋表」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">學資班學生學習回饋表</span></a>
+</li>
+ 	<li><a href="https://epay.tp.edu.tw" class="url_link" title="點擊查看「臺北市校園繳費系統」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">臺北市校園繳費系統</span></a>
+</li>
+ 	<li><a href="https://ldap.tp.edu.tw" class="url_link" title="點擊查看「臺北市校園單一身分驗證服務」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">臺北市校園單一身分驗證服務</span></a>
+</li>
+ 	<li><a href="https://ptst.k12ea.gov.tw/" class="url_link" title="點擊查看「國中小代理代課教師人才庫平台」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">國中小代理代課教師人才庫平台</span></a>
+</li>
+ 	<li><a href="http://tsn.moe.edu.tw/index/JobTShow.aspx?f=FUN201003161118253V1" class="url_link" title="點擊查看「全國高級中等以下學校教師選聘網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">全國高級中等以下學校教師選聘網</span></a>
+</li>
+ 	<li><a href="https://job.gov.taipei/FrontWebSite_RWD/G_gcareer/IndexMain_S.aspx" class="url_link" title="點擊查看「臺北市政府機關學校求職徵才網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><span class="title">臺北市政府機關學校求職徵才網</span></a>
+</li>
+</ul></div>
+				</div>
+            </div>
+        		</div>
+	</div>
+</section>
+<section class="home_section_wrap home_news">
+    <div class="home_section_box container">   
+        <div class="home_section_header">
+            <h2 class="home_section_title"><div class="title_box"><span class="title tw">校園公告</span></div></h2>
+
+            <a href="#tabshelp" class="tabshelp_open cus_btn green light tabshelp" title="在彈跳 (popup) 視窗中查看鍵盤操作說明" data-popup-ordinal="0" id="open_42529717">鍵盤操作說明</a>
+
+
+        </div>
+
+        <div class="tabs_desc">請以左、右方向鍵切換「行政公告、榮譽榜、研習資訊、活動競賽、升學宣導、民族英雄榜、教育局公文公告」
+之頁籤</div>
+
+        <div class="js-tabs">
+
+            <ul class="js-tablist news-tabs__list" data-hx="h2" data-tabs-prefix-class="news" role="tablist"><li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_5" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_5" tabindex="0" aria-selected="true">行政公告</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_3" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_3" tabindex="-1" aria-selected="false">榮譽榜</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_1" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_1" tabindex="-1" aria-selected="false">研習資訊</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_7" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_7" tabindex="-1" aria-selected="false">活動競賽</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_8" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_8" tabindex="-1" aria-selected="false">升學宣導</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_news_4" class="js-tablist__link news-tabs__link" role="button" aria-controls="news_4" tabindex="-1" aria-selected="false">民族英雄榜</a></li>
+<li class="js-tablist__item news-tabs__item" role="presentation"><a id="label_rssnews" class="js-tablist__link news-tabs__link" role="button" aria-controls="rssnews" tabindex="-1" aria-selected="false">教育局公文公告</a>
+</li></ul>
+
+            <noscript>
+            <style>
+                .js-tablist { display: none; }
+            </style>
+            </noscript>
+
+            <div class="tabs_content_box">
+                                <div id="news_5" class="js-tabcontent news-tabs__content" role="tabpanel" aria-labelledby="label_news_5"><h2 class="invisible" tabindex="0">行政公告</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">行政公告</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2025-06-20</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20311" href="https://web2.mtjh.tp.edu.tw/news/113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%96%b0%e7%94%9f%e6%99%ba%e5%8a%9b%e6%b8%ac%e9%a9%97%e8%87%a8%e6%99%82%e7%b7%a8%e7%8f%ad%e5%ad%b8%e7%94%9f%e5%90%8d%e5%96%ae-2/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>114學年度新生智力測驗臨時編班學生名單<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">發展組</td>
+
+		        
+        <td class="nt_view post-20311" data-title="瀏覽次數">
+            209        </td>
+    </tr>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20286" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e6%b0%91%e6%97%8f%e5%af%a6%e9%a9%97%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac1%e6%ac%a1%e6%ad%a3%e5%bc%8f%e6%95%99%e5%b8%ab%e7%94%84/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>臺北市民族實驗國民中學114學年度第1次正式教師甄選簡章<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">人事室</td>
+
+		        
+        <td class="nt_view post-20286" data-title="瀏覽次數">
+            302        </td>
+    </tr>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2025-01-13</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="19720" href="https://web2.mtjh.tp.edu.tw/news/114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%96%b0%e7%94%9f%e5%85%a5%e5%ad%b8%e6%ad%a3%e5%8f%96%e7%94%9f%e5%90%8d%e5%96%ae%e6%9a%a8%e5%82%99%e5%8f%96%e7%94%9f%e5%90%8d%e5%96%ae%e5%85%ac%e5%91%8a/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>114學年度新生入學正取生名單暨備取生名單公告<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		        
+        <td class="nt_view post-19720" data-title="瀏覽次數">
+            839        </td>
+    </tr>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2024-10-07</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="19190" href="https://web2.mtjh.tp.edu.tw/news/%e6%95%99%e5%ad%b8%e6%ad%a3%e5%b8%b8%e5%8c%96%e8%87%aa%e6%88%91%e6%aa%a2%e6%a0%b8%e8%a1%a8/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>教學正常化自我檢核表<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		        
+        <td class="nt_view post-19190" data-title="瀏覽次數">
+            433        </td>
+    </tr>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2024-08-29</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18978" href="https://web2.mtjh.tp.edu.tw/news/%e6%aa%a2%e9%80%81113-8-29%e6%a0%a1%e5%85%a7%e9%98%b2%e9%87%9d%e5%ad%94%e5%81%b5%e6%b8%ac%e6%94%9d%e5%bd%b1%e7%85%a7%e7%89%87%ef%bc%8c%e6%ad%a3%e5%b8%b8%ef%bc%8c%e8%ab%8b%e5%8f%83%e9%85%8c/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>★期初校園環境反針孔等安全防護措施說明<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">事務組</td>
+
+		        
+        <td class="nt_view post-18978" data-title="瀏覽次數">
+            262        </td>
+    </tr>
+        <tr class="sticky">
+        <td class="nt_date" data-title="發佈日期">2024-07-31</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18817" href="https://web2.mtjh.tp.edu.tw/news/113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%94%9f%e6%b4%bb%e4%bd%9c%e6%81%af%e8%aa%bf%e6%95%b4/" title="查看公告內容"><span class="sticky_text">置頂</span><span class="file_type news_type_1">公告</span>113學年度生活作息調整</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">生活教育組</td>
+
+		        
+        <td class="nt_view post-18817" data-title="瀏覽次數">
+            770        </td>
+    </tr>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-10-01</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20313" href="https://web2.mtjh.tp.edu.tw/news/%e3%80%8c%e5%a4%96%e5%9c%8b%e5%ad%b8%e7%94%9f%e4%be%86%e8%87%ba%e5%b0%b1%e5%ad%b8%e8%be%a6%e6%b3%95%e3%80%8d%e9%83%a8%e5%88%86%e6%a2%9d%e6%96%87%ef%bc%8c%e6%a5%ad%e7%b6%93%e6%95%99%e8%82%b2%e9%83%a8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>「外國學生來臺就學辦法」部分條文，業經教育部修正發布，檢送發布令影本及修正條文各1份<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20313" data-title="瀏覽次數">
+            6        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20297" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e4%bf%ae%e6%ad%a3%e3%80%8c%e8%87%ba%e5%8c%97%e5%b8%82%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e5%ad%b8%e7%bf%92%e8%bc%94%e5%b0%8e%e8%b2%bb%e6%94%b6%e8%b2%bb/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－修正「臺北市高級中等學校學習輔導費收費標準表」，請參閱<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20297" data-title="瀏覽次數">
+            76        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20296" href="https://web2.mtjh.tp.edu.tw/news/%e5%87%bd%e8%bd%89%e6%95%99%e8%82%b2%e9%83%a8%e5%87%bd%e7%a4%ba%ef%bc%8c%e6%9c%89%e9%97%9c%e8%87%ba%e7%81%a3%e5%9c%b0%e5%8d%80%e8%88%87%e5%a4%a7%e9%99%b8%e5%9c%b0%e5%8d%80%e4%ba%ba%e6%b0%91%e9%97%9c/" title="查看公告內容"><span class="file_type news_type_1">公告</span>函轉教育部函示，有關臺灣地區與大陸地區人民關係條例 （以下簡稱兩岸條例）第26條所稱之「設有戶籍」包含領有中共「定居證」或「居民身分證」<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">人事室</td>
+
+		
+        <td class="nt_view post-20296" data-title="瀏覽次數">
+            104        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20291" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e6%b0%91%e6%97%8f%e5%af%a6%e9%a9%97%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8-2025-fun-week%e5%89%b5%e6%84%8f%e5%98%89%e5%b9%b4%e8%8f%af%e7%b3%bb%e5%88%97%e6%b4%bb%e5%8b%95/" title="查看公告內容"><span class="file_type news_type_1">公告</span>臺北市民族實驗國民中學 2025 Fun Week創意嘉年華系列活動</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20291" data-title="瀏覽次數">
+            72        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20290" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e5%8d%97%e6%8a%95%e7%b8%a3114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%b8%a3%e7%ab%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e6%96%b0%e4%bb%bb%e6%a0%a1%e9%95%b7/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－南投縣114學年度縣立高級中等學校新任校長遴選簡章<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20290" data-title="瀏覽次數">
+            53        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20289" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e5%8e%9f%e6%95%99%e4%b8%ad%e5%bf%83113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e3%80%8c%e5%8f%b0%e5%8c%97%e5%8e%9f%e5%ae%87%e5%ae%99%e3%80%8d%e5%85%a8%e6%b0%91%e5%8e%9f%e6%95%99/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市原教中心113學年度「台北原宇宙」全民原教教材成果研習分享會<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20289" data-title="瀏覽次數">
+            53        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20285" href="https://web2.mtjh.tp.edu.tw/news/%e3%80%90%e6%9c%83%e8%80%83%e5%be%8c%e3%80%91114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%ab%98%e4%b8%ad%e8%81%b7%e4%ba%94%e5%b0%88%e5%a4%9a%e5%85%83%e5%85%a5%e5%ad%b8%e5%a0%b1%e5%90%8d%e6%b3%a8%e6%84%8f/" title="查看公告內容"><span class="file_type news_type_1">公告</span>【會考後】114學年度高中職五專多元入學報名注意事項</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20285" data-title="瀏覽次數">
+            98        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20283" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e7%ac%ac14%e5%b1%86%e6%95%99%e8%82%b2%e5%a4%a7%e6%84%9b%e3%80%8c%e8%8f%81%e5%b8%ab%e7%8d%8e%e3%80%8d%e9%81%b4%e9%81%b8%e8%be%a6%e6%b3%95%ef%bc%8c%e8%ab%8b%e8%b8%b4%e8%ba%8d/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－第14屆教育大愛「菁師獎」遴選辦法，請踴躍報名參加<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20283" data-title="瀏覽次數">
+            52        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20282" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d114%e5%b9%b4%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%b0%8f%e5%ad%b8%e7%8f%be%e8%81%b7%e6%95%99%e5%b8%ab%e5%ae%a2%e8%aa%9e%e6%96%87%e6%95%99%e5%ad%b8%e5%a2%9e%e8%83%bd%e7%a0%94/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－114年國民中小學現職教師客語文教學增能研習計畫 （第2梯次）<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20282" data-title="瀏覽次數">
+            48        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20281" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e8%87%ba%e5%8c%97%e5%b8%82114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%85%ac%e7%ab%8b%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%b0%8f%e5%ad%b8%e7%8f%be%e8%81%b7%e6%95%99%e5%b8%ab%e9%9b%99/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－臺北市114學年度公立國民中小學現職教師雙語教育學分班（政大班）<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20281" data-title="瀏覽次數">
+            70        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_5/" title="點擊查看">更多行政公告</a>
+                      </div>
+                  </div>
+			                  <div id="news_3" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_news_3"><h2 class="invisible" tabindex="0">榮譽榜</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">榮譽榜</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-28</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20177" href="https://web2.mtjh.tp.edu.tw/news/%e7%8b%82%e8%b3%80%e5%a5%b3%e7%b1%83%e5%8b%87%e5%a5%aa113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e5%9c%8b%e4%b8%ad%e7%b1%83%e7%90%83%e8%81%af%e8%b3%bd%e5%86%a0%e8%bb%8d/" title="查看公告內容"><span class="file_type news_type_3">賀</span>狂賀~~女籃勇奪113學年度中等學校國中籃球聯賽冠軍，締造歷史上第一次5連霸紀錄，感謝許秀勉教練、高玉堯教練、吳思璇主任及行政團隊辛勞指導。<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-20177" data-title="瀏覽次數">
+            158        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20093" href="https://web2.mtjh.tp.edu.tw/news/%e6%81%ad%e5%96%9c803%e6%9e%97%e6%b2%9b%e7%90%aa%e7%95%b6%e9%81%b8113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%84%aa%e8%89%af%e5%ad%b8%e7%94%9f%e4%bb%a3%e8%a1%a8%e3%80%82/" title="查看公告內容"><span class="file_type news_type_1">公告</span>恭喜803林沛琪當選113學年度優良學生代表。<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20093" data-title="瀏覽次數">
+            138        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-02-21</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="19895" href="https://web2.mtjh.tp.edu.tw/news/%e6%b0%91%e6%97%8f%e5%af%a6%e9%a9%97%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%95%a2%e6%a5%ad%e7%94%9f%e5%82%91%e5%87%ba%e5%b8%82%e9%95%b7%e7%8d%8e%e8%a9%95%e9%81%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>民族實驗國民中學113學年度畢業生傑出市長獎評選辦法(113年修)<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-19895" data-title="瀏覽次數">
+            222        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-12-04</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="19527" href="https://web2.mtjh.tp.edu.tw/news/%e8%b3%80%ef%bc%81%f0%9f%8e%89-%e6%97%8f%e4%b8%ad%e6%a9%9f%e7%a0%94901%e6%a5%8a%e6%b0%b8%e7%ab%a3%e3%80%81903%e6%9b%be%e5%ad%90%e8%8a%b9%e6%a6%ae%e7%8d%b2113%e5%b9%b4%e5%ba%a6%e8%87%ba%e5%8c%97/" title="查看公告內容"><span class="file_type news_type_3">賀</span>賀！🎉 族中機研901楊永竣、903曾子芹榮獲113年度臺北市無人機大賽障礙賽 第2名、應用賽 裁判特別獎🎉🎉🎉</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">資訊組</td>
+
+		
+        <td class="nt_view post-19527" data-title="瀏覽次數">
+            300        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-20</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18468" href="https://web2.mtjh.tp.edu.tw/news/%e7%8b%82%e8%b3%80%ef%bc%81%e6%81%ad%e5%96%9c%e6%9c%ac%e6%a0%a1%e4%b9%9d%e5%b9%b4%e7%b4%9a%e6%a5%8a%e4%bb%a5%e7%8f%8a%e5%90%8c%e5%ad%b8%e3%80%81%e6%9e%97%e4%bb%a5%e6%99%b4%e5%90%8c%e5%ad%b8%ef%bc%8c/" title="查看公告內容"><span class="file_type news_type_3">賀</span>狂賀！恭喜本校九年級楊以珊同學、林以晴同學，錄取臺北市數位實中！！！</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">輔導室</td>
+
+		
+        <td class="nt_view post-18468" data-title="瀏覽次數">
+            528        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-10</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18375" href="https://web2.mtjh.tp.edu.tw/news/%e8%b3%80%e6%9c%ac%e6%a0%a1%e5%a5%b3%e7%b1%83%e9%9a%8a%e5%ad%b8%e7%94%9f%e6%b4%aa%e8%aa%9e%e6%9a%84%e3%80%81%e9%99%b3%e6%9f%94%e5%ae%89%e3%80%81%e6%9e%97%e5%bf%b5%e8%87%bb%e5%85%a5%e9%81%b8%e3%80%8c20/" title="查看公告內容"><span class="file_type news_type_3">賀</span>賀本校女籃隊學生洪語暄、陳柔安、林念臻入選「2024年FIBA U17世界盃女子籃球賽」國家隊培訓隊成員</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-18375" data-title="瀏覽次數">
+            866        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-10</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18374" href="https://web2.mtjh.tp.edu.tw/news/%e8%b3%80%e6%9c%ac%e6%a0%a1%e8%a8%b1%e7%a7%80%e5%8b%89%e6%95%99%e7%b7%b4%e6%93%94%e4%bb%bb%e3%80%8c2024%e5%b9%b4fiba-u17%e4%b8%96%e7%95%8c%e7%9b%83%e5%a5%b3%e5%ad%90%e7%b1%83%e7%90%83%e8%b3%bd/" title="查看公告內容"><span class="file_type news_type_3">賀</span>賀本校許秀勉教練擔任「2024年FIBA U17世界盃女子籃球賽」國家隊總教練</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-18374" data-title="瀏覽次數">
+            1,195        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-04-25</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18303" href="https://web2.mtjh.tp.edu.tw/news/%e6%9c%ac%e6%a0%a1%e5%ad%b8%e7%94%9f%e6%96%bc%e8%87%ba%e5%8c%97%e5%b7%bf112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8%e6%8a%80%e8%97%9d%e6%95%99%e8%82%b2%e8%aa%b2%e7%a8%8b/" title="查看公告內容"><span class="file_type news_type_3">賀</span>本校學生於臺北巿112學年度國民中學技藝教育課程技藝競賽成績表現優異<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">發展組</td>
+
+		
+        <td class="nt_view post-18303" data-title="瀏覽次數">
+            487        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-04-22</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18323" href="https://web2.mtjh.tp.edu.tw/news/%e7%8b%82%e8%b3%80%e7%94%b7%e8%b6%b3%e5%8b%87%e5%a5%aa112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e8%b6%b3%e7%90%83%e8%81%af%e8%b3%bd11%e4%ba%ba%e5%88%b6%e7%ac%ac6%e5%90%8d/" title="查看公告內容"><span class="file_type news_type_3">賀</span>狂賀~~男足勇奪112學年度中等學校足球聯賽11人制第6名佳績</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-18323" data-title="瀏覽次數">
+            687        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-04-22</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18322" href="https://web2.mtjh.tp.edu.tw/news/%e7%8b%82%e8%b3%80%e5%a5%b3%e7%b1%83%e6%a6%ae%e7%8d%b2112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%85%a8%e5%9c%8b%e7%94%b2%e7%b4%9a%e8%81%af%e8%b3%bd%e5%86%a0%e8%bb%8d%e9%81%94%e6%88%90%e5%9b%9b%e9%80%a3/" title="查看公告內容"><span class="file_type news_type_3">賀</span>狂賀~~女籃榮獲112學年度全國甲級聯賽冠軍達成四連霸殊榮</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-18322" data-title="瀏覽次數">
+            634        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_3/" title="點擊查看">更多榮譽榜</a>
+                      </div>
+                  </div>
+			                  <div id="news_1" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_news_1"><h2 class="invisible" tabindex="0">研習資訊</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">研習資訊</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20295" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e3%80%8c114%e5%b9%b4%e5%ba%a6%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e4%bb%a5%e4%b8%8b%e5%ad%b8%e6%a0%a1%e8%87%ba%e7%81%a3%e6%89%8b%e6%95%99%e5%b8%ab%e7%ac%ac2%e6%9c%9f/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－「114年度高級中等以下學校臺灣手教師第2期培訓及認證實施計畫」1份，報名請洽教學組<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20295" data-title="瀏覽次數">
+            47        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20292" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%e6%95%99%e8%82%b2%e9%83%a8%e9%ab%94%e8%82%b2%e7%bd%b2%e5%a7%94%e8%a8%97%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e5%b8%ab%e7%af%84%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e3%80%8c114/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>轉知教育部體育署委託國立臺灣師範大學辦理「114年度 山野教育推廣實施計畫」之師資增能初階體驗課程（第1 梯）一案<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20292" data-title="瀏覽次數">
+            49        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-13</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20273" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e3%80%8c%e5%85%92%e7%ab%a5%e6%ac%8a%e5%88%a9%e5%85%ac%e7%b4%84%e3%80%8d%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92%e5%af%a6%e6%96%bd%e8%a8%88/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市113學年度「兒童權利公約」教師研習實施計畫1份<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">生活教育組</td>
+
+		
+        <td class="nt_view post-20273" data-title="瀏覽次數">
+            52        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-07</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20245" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e3%80%8c%e8%87%ba%e5%8c%97%e5%b8%82114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%85%ac%e7%ab%8b%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%b0%8f%e5%ad%b8%e7%8f%be%e8%81%b7%e6%95%99%e5%b8%ab/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－「臺北市114學年度公立國民中小學現職教師暑假 進階雙語研習（美國Greensboro College教育學院）」一 案，請有意願參與增能研習之教師報名參加<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20245" data-title="瀏覽次數">
+            60        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20227" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e6%95%99%e8%82%b2%e9%83%a8%e5%9c%8b%e6%b0%91%e5%8f%8a%e5%ad%b8%e5%89%8d%e6%95%99%e8%82%b2%e7%bd%b2114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%a3%9c%e5%8a%a9%e6%8e%a8%e5%8b%95/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－教育部國民及學前教育署114學年度補助推動書法教育 整體計畫，請參閱<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20227" data-title="瀏覽次數">
+            68        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20226" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d114%e5%b9%b4%e5%ba%a6%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8%e5%8b%9e%e5%8b%95%e6%95%99%e8%82%b2%e7%a8%ae%e5%ad%90%e6%95%99%e5%b8%ab%e5%9f%b9%e8%a8%93%e7%87%9f%ef%bc%8c/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－114年度國民中學勞動教育種子教師培訓營，請參閱<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20226" data-title="瀏覽次數">
+            63        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20225" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e8%87%ba%e5%8c%97%e5%b8%82113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%a7%91%e6%8a%80%e6%95%99%e8%82%b2%e5%9c%8b%e4%b8%ad%e5%88%86%e5%9c%98%e5%85%ac%e9%96%8b%e8%a7%80%e8%ad%b0/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－臺北市113學年度科技教育國中分團公開觀議課， 檢附相關研習計畫，請參閱<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20225" data-title="瀏覽次數">
+            62        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-30</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20211" href="https://web2.mtjh.tp.edu.tw/news/%e8%bd%89%e7%9f%a5%ef%bc%8d%e3%80%8c%e5%8b%9e%e5%8b%95%e6%95%99%e8%82%b2%e7%a8%ae%e5%ad%90%e6%95%99%e5%b8%ab%e5%9f%b9%e8%a8%93%e7%87%9f-%e5%9c%8b%e4%b8%ad%e5%a0%b4%e3%80%8d%ef%bc%8c%e8%ab%8b/" title="查看公告內容"><span class="file_type news_type_1">公告</span>轉知－「勞動教育種子教師培訓營—國中場」，請踴躍報名參加<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-20211" data-title="瀏覽次數">
+            68        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-24</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20162" href="https://web2.mtjh.tp.edu.tw/news/%e6%83%85%e6%84%9f%e6%95%99%e8%82%b2%e8%88%87%e6%80%a7%e5%88%a5%e7%9a%84%e6%85%8b%ef%a8%81%e8%88%87%e8%a7%80%ef%a6%a3%ef%bc%88%e5%90%ab%e9%81%a9%e7%95%b6%e4%b9%8b%e8%bf%bd%e6%b1%82%ef%a8%88%e7%82%ba/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>情感教育與性別的態度與觀念（含適當之追求行為）─ 「性別意識培力x 多元性別、愛慕與尊重：追愛的智慧」 特殊教育研習<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">特教組</td>
+
+		
+        <td class="nt_view post-20162" data-title="瀏覽次數">
+            40        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-24</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20160" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e8%81%bd%e9%9a%9c%e6%95%99%e8%82%b2%e8%b3%87%e6%ba%90%e4%b8%ad%e5%bf%83-%e8%81%bd%e9%9a%9c%e6%95%99%e8%82%b2%e6%9c%9f%e5%88%8a%e7%ac%ac24%e6%9c%9f%e5%be%b5%e7%a8%bf/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市聽障教育資源中心 聽障教育期刊第24期徵稿<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_1/">研習資訊</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">特教組</td>
+
+		
+        <td class="nt_view post-20160" data-title="瀏覽次數">
+            42        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_1/" title="點擊查看">更多研習資訊</a>
+                      </div>
+                  </div>
+			                  <div id="news_7" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_news_7"><h2 class="invisible" tabindex="0">活動競賽</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">活動競賽</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20291" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e6%b0%91%e6%97%8f%e5%af%a6%e9%a9%97%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8-2025-fun-week%e5%89%b5%e6%84%8f%e5%98%89%e5%b9%b4%e8%8f%af%e7%b3%bb%e5%88%97%e6%b4%bb%e5%8b%95/" title="查看公告內容"><span class="file_type news_type_1">公告</span>臺北市民族實驗國民中學 2025 Fun Week創意嘉年華系列活動</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20291" data-title="瀏覽次數">
+            72        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20287" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e9%ab%94%e8%82%b2%e7%b8%bd%e6%9c%83%e8%be%a6%e7%90%86%e3%80%8c114%e5%b9%b4%e8%87%ba%e5%8c%97%e5%b8%82%e9%9d%92%e5%b9%b4%e7%9b%83%e6%9f%94%e9%81%93%e9%8c%a6%e6%a8%99/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市體育總會辦理「114年臺北市青年盃柔道錦標賽」一案<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-20287" data-title="瀏覽次數">
+            59        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-13</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20275" href="https://web2.mtjh.tp.edu.tw/news/114%e5%b9%b4%e5%ba%a6%e7%94%a8%e8%97%a5%e5%ae%89%e5%85%a8%e5%ae%a3%e5%b0%8e%e6%9a%a8%e6%af%92%e5%93%81%e5%8d%b1%e5%ae%b3%e9%98%b2%e5%88%b6%e8%a8%88%e7%95%ab%e3%80%8c-%e5%89%b5%e6%84%8f%e6%97%a9/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>114年度用藥安全宣導暨毒品危害防制計畫「 創意早安圖設計競賽」活動辦法及競賽海報各1份<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">生活教育組</td>
+
+		
+        <td class="nt_view post-20275" data-title="瀏覽次數">
+            49        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-13</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20274" href="https://web2.mtjh.tp.edu.tw/news/%e6%96%b0%e5%8c%97%e5%b8%82%e6%94%bf%e5%ba%9c%e8%ad%a6%e5%af%9f%e5%b1%80%e8%be%a6%e7%90%86%e3%80%8c%e3%80%8e%e6%af%9b%e8%ad%a6%e5%ae%98%e7%b7%9d%e6%8b%bf%e8%85%90%e6%95%97%e4%b8%89%e9%a0%ad%e7%8a%ac/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>新北市政府警察局辦理「『毛警官緝拿腐敗三頭犬』 反詐騙倡廉潔有獎徵答活動」<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">生活教育組</td>
+
+		
+        <td class="nt_view post-20274" data-title="瀏覽次數">
+            55        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20270" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e8%a5%bf%e6%b9%96%e5%af%a6%e9%a9%97%e5%9c%8b%e6%b0%91%e4%b8%ad%e5%ad%b8114%e5%b9%b4%e5%ba%a6%e7%b6%b2%e7%90%83%e5%a4%8f%e4%bb%a4%e7%87%9f%e6%b4%bb%e5%8b%95%e5%af%a6/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市西湖實驗國民中學114年度網球夏令營活動實施計畫<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-20270" data-title="瀏覽次數">
+            70        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20269" href="https://web2.mtjh.tp.edu.tw/news/%e3%80%8c%e7%ac%ac17%e5%b1%86%e5%8f%b0%e5%8c%97%e9%9d%92%e5%b9%b4%e7%ae%a1%e6%a8%82%e5%9c%98%e9%99%bd%e5%85%89%e7%ae%a1%e6%a8%82%e5%a4%8f%e4%bb%a4%e7%87%9f%e3%80%8d%e6%8b%9b%e7%94%9f%e7%b0%a1%e7%ab%a0/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>「第17屆台北青年管樂團陽光管樂夏令營」招生簡章<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20269" data-title="瀏覽次數">
+            49        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20268" href="https://web2.mtjh.tp.edu.tw/news/%e9%87%91%e9%99%b5%e5%a5%b3%e4%b8%ad%e8%88%89%e8%be%a6%e3%80%8c%e9%87%91%e9%99%b5%e5%a5%b3%e4%b8%ad%e7%ae%a1%e6%a8%82%e5%9c%98%e6%9a%a8%e9%9f%b3%e6%a8%82%e7%a4%be%e5%9c%98%e8%81%af%e5%90%88%e5%85%ac/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>金陵女中舉辦「金陵女中管樂團暨音樂社團聯合公 演」活動<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20268" data-title="瀏覽次數">
+            55        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20267" href="https://web2.mtjh.tp.edu.tw/news/%e6%95%99%e8%82%b2%e9%83%a8%e8%bd%89%e7%9f%a5%e4%b8%ad%e8%8f%af%e9%9b%bb%e4%bf%a1%e3%80%8c2025funpark%e7%ab%a5%e6%9b%b8%e6%98%9f%e5%89%b5%e7%8d%8e-%e6%95%b8%e4%bd%8d-%e7%b9%aa%e6%9c%ac%e5%be%b5/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>教育部轉知中華電信「2025FunPark童書星創獎-數位 繪本徵選與創意說故事競賽」一案<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20267" data-title="瀏覽次數">
+            66        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20266" href="https://web2.mtjh.tp.edu.tw/news/2025%e4%b8%ad%e5%a4%ae%e7%a4%be%e5%85%a8%e6%96%b9%e4%bd%8d%e4%b8%bb%e6%92%ad%e7%87%9f%e5%8f%8a%e6%96%b0%e8%81%9e%e7%87%9f%e5%a0%b1%e5%90%8d%e8%b3%87%e8%a8%8a/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>2025中央社全方位主播營及新聞營報名資訊<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20266" data-title="瀏覽次數">
+            59        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-08</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20258" href="https://web2.mtjh.tp.edu.tw/news/%e4%b8%ad%e8%8f%af%e6%b0%91%e5%9c%8b%e5%87%ba%e7%89%88%e5%95%86%e6%a5%ad%e5%90%8c%e6%a5%ad%e5%85%ac%e6%9c%83%e5%85%a8%e5%9c%8b%e8%81%af%e5%90%88%e6%9c%83%e3%80%8c2025%e5%8f%b0%e5%8c%97%e5%9c%8b/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>中華民國出版商業同業公會全國聯合會「2025台北國際童書展」活動訊息<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_7/">活動競賽</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">圖書室</td>
+
+		
+        <td class="nt_view post-20258" data-title="瀏覽次數">
+            47        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_7/" title="點擊查看">更多活動競賽</a>
+                      </div>
+                  </div>
+			                  <div id="news_8" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_news_8"><h2 class="invisible" tabindex="0">升學宣導</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">升學宣導</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-14</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20285" href="https://web2.mtjh.tp.edu.tw/news/%e3%80%90%e6%9c%83%e8%80%83%e5%be%8c%e3%80%91114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%ab%98%e4%b8%ad%e8%81%b7%e4%ba%94%e5%b0%88%e5%a4%9a%e5%85%83%e5%85%a5%e5%ad%b8%e5%a0%b1%e5%90%8d%e6%b3%a8%e6%84%8f/" title="查看公告內容"><span class="file_type news_type_1">公告</span>【會考後】114學年度高中職五專多元入學報名注意事項</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20285" data-title="瀏覽次數">
+            98        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-12</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20271" href="https://web2.mtjh.tp.edu.tw/news/%e6%9c%89%e9%97%9c%e8%87%ba%e5%8c%97%e5%b8%82%e7%a7%81%e7%ab%8b%e5%bc%b7%e6%81%95%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%9b%b4%e5%90%8d%e7%82%ba%e3%80%8c%e8%87%ba/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>有關臺北市私立強恕高級中學114學年度更名為「臺北市 私立新民高級中等學校」，請查照。</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20271" data-title="瀏覽次數">
+            70        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-05-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20224" href="https://web2.mtjh.tp.edu.tw/news/114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e8%97%9d%e8%a1%93%e6%89%8d%e8%83%bd%e7%8f%ad%e7%89%b9%e8%89%b2%e6%8b%9b%e7%94%9f%e7%94%84%e9%81%b8%e5%85%a5/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>114學年度高級中等學校藝術才能班特色招生甄選入學 總召學校修正廢考音階公告文字一案</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20224" data-title="瀏覽次數">
+            81        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-28</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20176" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e7%81%a3%e5%8c%97%e5%8d%80114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e7%be%8e%e8%a1%93%e7%8f%ad%e7%89%b9%e8%89%b2%e6%8b%9b%e7%94%9f%e7%94%84-2/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺灣北區114學年度高級中等學校美術班特色招生甄選入學聯合簡章彙編修正核定版1份<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20176" data-title="瀏覽次數">
+            79        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-24</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20156" href="https://web2.mtjh.tp.edu.tw/news/%e6%95%99%e8%82%b2%e9%83%a8%e5%87%bd%e5%be%a9113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%8c%97%e5%8d%80%e9%ab%98%e4%b8%ad%e9%9f%b3%e6%a8%82%e7%8f%ad%e8%81%af%e6%8b%9b%e5%9c%8b%e6%a8%82%e7%b5%84%e5%bb%a2/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>教育部函復113學年度北區高中音樂班聯招國樂組廢考「音階」一案<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20156" data-title="瀏覽次數">
+            79        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-23</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20153" href="https://web2.mtjh.tp.edu.tw/news/114%e5%b9%b4%e5%9c%8b%e4%b8%ad%e6%95%99%e8%82%b2%e6%9c%83%e8%80%83%e8%8b%b1%e6%96%87%ef%bc%88%e8%81%bd%e5%8a%9b%ef%bc%89%e6%b8%ac%e9%a9%97%e9%85%8d%e5%90%88%e4%ba%8b%e9%a0%85/" title="查看公告內容"><span class="file_type news_type_1">公告</span>114年國中教育會考英文（聽力）測驗配合事項</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20153" data-title="瀏覽次數">
+            100        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-23</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20152" href="https://web2.mtjh.tp.edu.tw/news/%e8%81%96%e6%af%8d%e9%86%ab%e8%ad%b7%e7%ae%a1%e7%90%86%e5%b0%88%e7%a7%91%e5%ad%b8%e6%a0%a1-%e3%80%8c114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%ba%94%e5%b0%88%e7%b7%9a%e4%b8%8a%e6%8b%9b%e7%94%9f%e8%aa%aa/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>聖母醫護管理專科學校-「114學年度五專線上招生說明會」</a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20152" data-title="瀏覽次數">
+            81        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-16</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20130" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e6%98%b1%e5%85%89%e8%8f%af%e5%be%b7%e7%a6%8f%e5%af%a6%e9%a9%97%e6%95%99%e8%82%b2%e6%a9%9f%e6%a7%8b-%e3%80%8c114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%8b%9b%e7%94%9f%e8%aa%aa/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市昱光華德福實驗教育機構-「114學年度招生說明會」<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20130" data-title="瀏覽次數">
+            131        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-10</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20109" href="https://web2.mtjh.tp.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e7%a7%81%e7%ab%8b%e6%b3%b0%e5%8c%97%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c%e6%9e%9c%e6%a0%b8%e7%8d%8e%e5%8a%a9%e5%ad%b8%e9%87%91%e5%8e%9f%e4%bd%8f%e6%b0%91%e4%ba%ba/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>臺北市私立泰北高級中學「果核獎助學金原住民人才培育甄選計畫」<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20109" data-title="瀏覽次數">
+            99        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-03-31</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20084" href="https://web2.mtjh.tp.edu.tw/news/%e8%82%b2%e9%81%94%e5%ad%b8%e6%a0%a1%e8%b2%a1%e5%9c%98%e6%b3%95%e4%ba%ba%e8%87%ba%e5%8c%97%e5%b8%82%e7%a7%81%e7%ab%8b%e8%82%b2%e9%81%94%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1-%e9%9b%99/" title="查看公告內容"><span class="file_type news_type_2">轉知</span>育達學校財團法人臺北市私立育達高級中等學校-雙語國中部辦理114學年度「接軌國際-多元文化雙語 體驗營」暨新生入學說明會<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_5/">行政公告</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">註冊組</td>
+
+		
+        <td class="nt_view post-20084" data-title="瀏覽次數">
+            128        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_8/" title="點擊查看">更多升學宣導</a>
+                      </div>
+                  </div>
+			                  <div id="news_4" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_news_4"><h2 class="invisible" tabindex="0">民族英雄榜</h2>
+
+                        <noscript>
+                            <h3 class="mt15 mb10">民族英雄榜</h3>
+                        </noscript>
+
+                      
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">標題</th>
+			
+            <th scope="col">公告類別</th>
+
+			
+			            
+
+            <th scope="col">發佈單位</th>
+
+			            
+            <th scope="col">瀏覽</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-28</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20177" href="https://web2.mtjh.tp.edu.tw/news/%e7%8b%82%e8%b3%80%e5%a5%b3%e7%b1%83%e5%8b%87%e5%a5%aa113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e5%9c%8b%e4%b8%ad%e7%b1%83%e7%90%83%e8%81%af%e8%b3%bd%e5%86%a0%e8%bb%8d/" title="查看公告內容"><span class="file_type news_type_3">賀</span>狂賀~~女籃勇奪113學年度中等學校國中籃球聯賽冠軍，締造歷史上第一次5連霸紀錄，感謝許秀勉教練、高玉堯教練、吳思璇主任及行政團隊辛勞指導。<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">體育組</td>
+
+		
+        <td class="nt_view post-20177" data-title="瀏覽次數">
+            158        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2025-04-02</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="20093" href="https://web2.mtjh.tp.edu.tw/news/%e6%81%ad%e5%96%9c803%e6%9e%97%e6%b2%9b%e7%90%aa%e7%95%b6%e9%81%b8113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%84%aa%e8%89%af%e5%ad%b8%e7%94%9f%e4%bb%a3%e8%a1%a8%e3%80%82/" title="查看公告內容"><span class="file_type news_type_1">公告</span>恭喜803林沛琪當選113學年度優良學生代表。<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_3/">榮譽榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">學生活動組</td>
+
+		
+        <td class="nt_view post-20093" data-title="瀏覽次數">
+            138        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-29</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18528" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%b8%8b%e5%ad%b8%e6%9c%9f%e8%8b%b1%e6%96%87%e5%96%ae%e5%ad%97%e7%8e%8b%e6%af%94%e8%b3%bd%e5%be%97%e7%8d%8e%e5%90%8d%e5%96%ae/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度下學期英文單字王比賽得獎名單<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18528" data-title="瀏覽次數">
+            682        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-20</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18466" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e5%8e%9f%e4%bd%8f%e6%b0%91%e8%aa%9e%e6%9c%97%e8%ae%80%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆原住民語朗讀比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18466" data-title="瀏覽次數">
+            399        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-20</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18465" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e9%96%a9%e5%8d%97%e8%aa%9e%e6%83%85%e5%a2%83%e5%bc%8f%e6%bc%94%e8%aa%aa%e9%96%a9%e5%8d%97%e8%aa%9e%e6%9c%97%e8%ae%80/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆閩南語情境式演說&amp;閩南語朗讀比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18465" data-title="瀏覽次數">
+            364        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18405" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e5%9c%8b%e8%aa%9e%e6%9c%97%e8%ae%80%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆國語朗讀比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18405" data-title="瀏覽次數">
+            478        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18404" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e5%9c%8b%e8%aa%9e%e6%bc%94%e8%aa%aa%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆國語演說比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18404" data-title="瀏覽次數">
+            405        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18403" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e5%ad%97%e9%9f%b3%e5%ad%97%e5%bd%a2%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆字音字形比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18403" data-title="瀏覽次數">
+            568        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18402" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e4%bd%9c%e6%96%87%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆作文比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18402" data-title="瀏覽次數">
+            434        </td>
+    </tr>
+        <tr>
+        <td class="nt_date" data-title="發佈日期">2024-05-15</td>
+        <td class="nt_subject" data-title="公告標題"><a class="news_title" nid="18401" href="https://web2.mtjh.tp.edu.tw/news/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e8%aa%9e%e6%96%87%e7%ab%b6%e8%b3%bd%e2%98%86%e6%9b%b8%e6%b3%95%e6%af%94%e8%b3%bd%e5%84%aa%e5%8b%9d%e5%90%8c%e5%ad%b8/" title="查看公告內容"><span class="file_type news_type_1">公告</span>112學年度語文競賽☆書法比賽優勝同學<span style="margin-left:.5em;"><img src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/icon/attach.png" alt="附件" title="此篇公告包含附件"></span></a></td>
+
+		            
+
+        <td class="nt_category" data-title="公告類別"><a href="https://web2.mtjh.tp.edu.tw/category/news/news_4/">民族英雄榜</a></td>
+
+		        
+		            
+
+        <td class="nt_unit" data-title="發佈單位">教學組</td>
+
+		
+        <td class="nt_view post-18401" data-title="瀏覽次數">
+            431        </td>
+    </tr>
+        </tbody>
+</table>
+                      <div class="action_box">
+						                          <a class="cus_btn yellow" href="https://web2.mtjh.tp.edu.tw/category/news/news_4/" title="點擊查看">更多民族英雄榜</a>
+                      </div>
+                  </div>
+			
+                <!-- 加上台北市政府教育局公告 --->
+
+				
+                <div id="rssnews" class="js-tabcontent news-tabs__content" role="tabpanel" aria-hidden="true" aria-labelledby="label_rssnews"><h2 class="invisible" tabindex="0">教育局公文公告</h2>
+	                
+<p class="h3 mb10" align="center">臺北市政府教育局公文公告<em> (RSS 轉載)</em></p>
+<table class="nt_table">
+    <thead>
+        <tr>
+            <th scope="col">編號</th>
+            <th scope="col">公告日期</th>
+            <th scope="col">主題</th>
+            <th scope="col">公告類別</th>
+            <th scope="col">動作</th>
+        </tr>
+    </thead>
+    <tbody>
+	        <tr>
+            <td class="nt_number" data-title="編號">
+				1            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-02            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=88C9F24B59A4E365" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【賽事資訊】115年全國師生盃巧固球錦標賽</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=88C9F24B59A4E365" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				2            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-02            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=B8FF5EFBA6670FD7" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【賽事資訊】中華民國跆拳道協會辦理「115年度培育優秀或具潛力運動選手暨2026年青年奧運國家代表隊選拔賽」</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=B8FF5EFBA6670FD7" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				3            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-02            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=803878C02A8429F8" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】高雄市政府教育局辦理115年度「因材網打寇島程式教育教學應用」 工作坊資訊</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=803878C02A8429F8" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				4            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-02            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=71350ABA248B61E9" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】國立臺中教育大學辦理115年適應運動推廣工作坊系列活動</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=71350ABA248B61E9" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				5            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-01            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=E5CC292A49373C38" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】高雄市政府教育局辦理115年度「因材網打寇島程式教育教學應用」 研習資訊</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=E5CC292A49373C38" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				6            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-01            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=0C05DE5CD6096F69" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】財團法人農友社福利基金會辦理「2026繪畫徵選競賽」</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=0C05DE5CD6096F69" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				7            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-01            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=929FEFCA537426E4" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】國家表演藝術中心國家兩廳院「國家兩廳院青年會員—廳院青」免費申辦資訊</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=929FEFCA537426E4" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				8            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-01            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=D8D3CCA8E6B91F4F" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】花蓮縣政府辦理「115年第九屆花蓮蘭亭大會全國賽」</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=D8D3CCA8E6B91F4F" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				9            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-04-01            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=F5F0F47091589A69" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【賽事資訊】115年度少年桌球排名賽競賽規程</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=F5F0F47091589A69" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			        <tr>
+            <td class="nt_number" data-title="編號">
+				10            </td>
+            <td class="nt_date" data-title="公告日期">
+				2026-03-31            </td>
+            <td class="nt_subject" data-title="主題">
+            	<a href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=1E5DABF54FB4DB52" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">【轉知】國家圖書館辦理2026世界閱讀日主題活動「我的經典繪本由我展演」行動故事盒創作活動，敬邀各單位共同響應及協助宣傳，並請踴躍參與</a>
+            </td>
+			<td class="nt_category" data-title="公告類別">一般公告</td>
+            <td class="nt_link">
+                <a class="cus_btn orange light" href="https://www.doe.gov.taipei/News_Content.aspx?n=9AA0CC873BD001A2&amp;s=1E5DABF54FB4DB52" title="連結至臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">閱讀全文</a>
+            </td>
+        </tr>
+			    </tbody>
+</table>
+<div class="action_box">
+	    <a class="cus_btn yellow" href="https://www.doe.gov.taipei/News.aspx?n=9AA0CC873BD001A2&amp;sms=2E90303507CA4A6B" title="臺北市政府教育局公文公告
+(新視窗開啟)" target="_blank" rel="noopener noreferrer">更多臺北市政府教育局公文公告</a>
+</div>
+                </div>
+
+				
+            </div>
+
+        </div><!-- js-tabs -->
+	</div>
+</section>
+<section class="home_section_wrap home_related">
+    <div class="home_section_box container">   
+        <div class="home_section_header">
+            <h2 class="home_section_title"><div class="title_box"><span class="title tw">好站連結</span></div></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-10 left_half">
+                <div class="home_related_box">
+
+                    <ul class="file_list md8 sm4 xs3 no_icon clearfix">
+	<li><a href="https://service.gov.taipei/" class="url_link" title="點擊查看「臺北市民服務大平臺」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市民服務大平臺.png" alt="臺北市民服務大平臺" class="img-thumbnail"></a>
+</li>
+	<li><a href="http://eatingright.tp.edu.tw/" class="url_link" title="點擊查看「臺北市學校午餐網站」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市學校午餐網站.png" alt="臺北市學校午餐網站" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www.lct.tp.edu.tw/bin/home.php" class="url_link" title="點擊查看「臺北市學習型城市網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市學習型城市網.png" alt="臺北市學習型城市網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://csrc.edu.tw/bully/" class="url_link" title="點擊查看「教育部防制校園霸凌」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/教育部防制校園霸凌.png" alt="教育部防制校園霸凌" class="img-thumbnail"></a>
+</li>
+	<li><a href="http://cooc.tp.edu.tw/index.htm" class="url_link" title="點擊查看「臺北酷課雲」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北酷課雲.png" alt="臺北酷課雲" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://ono.tp.edu.tw/insc" class="url_link" title="點擊查看「臺北教師e學苑」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北教師e學苑.png" alt="臺北教師e學苑" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://cloud.edu.tw/" class="url_link" title="點擊查看「教育部教育雲」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/教育部教育雲.png" alt="教育部教育雲" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://cirn.moe.edu.tw/Facet/Home/index.aspx?HtmlName=Home&amp;" class="url_link" title="點擊查看「國民中小學課程與教學資源整合平臺」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/國民中小學課程與教學資源整合平臺.png" alt="國民中小學課程與教學資源整合平臺" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://shwoo.gov.taipei/shwoo/home/home00/index" class="url_link" title="點擊查看「臺北惜物網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北惜物網.png" alt="臺北惜物網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://career.cloud.ncnu.edu.tw/" class="url_link" title="點擊查看「學生生涯輔導網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/學生生涯輔導網.png" alt="學生生涯輔導網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://onlinedb.tp.edu.tw/Login.action#" class="url_link" title="點擊查看「臺北市政府教育局線上資料庫知識管理平臺」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/線上資料庫知識管理平臺.png" alt="臺北市政府教育局線上資料庫知識管理平臺" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://teric.naer.edu.tw/wSite/mp?mp=teric_b" class="url_link" title="點擊查看「臺灣教育研究資訊網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺灣教育研究資訊網.png" alt="臺灣教育研究資訊網" class="img-thumbnail"></a>
+</li>
+	<li><a href="http://etweb.tp.edu.tw/index/" class="url_link" title="點擊查看「臺北益教網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北益教網.png" alt="臺北益教網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://scitechvista.nat.gov.tw" class="url_link" title="點擊查看「科技大觀園」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/科技大觀園.png" alt="科技大觀園" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www.165.gov.tw/" class="url_link" title="點擊查看「警政署165全民防騙網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/警政署165全民防騙網.png" alt="警政署165全民防騙網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www.edu.tw/helpdreams/Default.aspx" class="url_link" title="點擊查看「圓夢助學網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/圓夢助學網.png" alt="圓夢助學網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://watersafety.sa.gov.tw/" class="url_link" title="點擊查看「學生水域運動安全網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/學生水域運動安全網.png" alt="學生水域運動安全網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www.eoc.gov.taipei/" class="url_link" title="點擊查看「臺北市防災資訊網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市防災資訊網.png" alt="臺北市防災資訊網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www.ietw2.edu.tw/" class="url_link" title="點擊查看「中小學國際教育2.0資訊網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/中小學國際教育2.0資訊網.png" alt="中小學國際教育2.0資訊網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://familyedu.moe.gov.tw/" class="url_link" title="點擊查看「教育部家庭教育資源網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/教育部家庭教育網.png" alt="教育部家庭教育資源網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://sts.tp.edu.tw/" class="url_link" title="點擊查看「交通安全宣導入口網站」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/交通安全宣導入口網站.png" alt="交通安全宣導入口網站" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://elearning.taipei/mpage/" class="url_link" title="點擊查看「臺北e大」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北e大.png" alt="臺北e大" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://enews.tiec.tp.edu.tw/" class="url_link" title="點擊查看「臺北市教育e報」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市教育e報.png" alt="臺北市教育e報" class="img-thumbnail"></a>
+</li>
+	<li><a href="http://mt.utaipei.edu.tw/" class="url_link" title="點擊查看「臺北市教學輔導教師網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市教學輔導教師網.png" alt="臺北市教學輔導教師網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvcHVibGljL0F0dGFjaG1lbnQvMjkyODEwNDY5MTEucGRm&amp;n=MjkyODEwNDY5MTEucGRm&amp;icon=..pdf" class="url_link" title="點擊查看「臺北市教育措施手冊」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市教育措施手冊.png" alt="臺北市教育措施手冊" class="img-thumbnail"></a>
+</li>
+	<li><a href="http://enc.moe.edu.tw/" class="url_link" title="點擊查看「防制學生藥物濫用資源網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/防制學生藥物濫用資源網.png" alt="防制學生藥物濫用資源網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://tscc.tp.edu.tw/" class="url_link" title="點擊查看「台北市學生輔導諮商中心」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/台北市學生輔導諮詢中心.png" alt="台北市學生輔導諮商中心" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://ireading.tp.edu.tw/" class="url_link" title="點擊查看「台北市深耕閱讀推動資源網」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/台北市深耕閱讀推動資源網.png" alt="台北市深耕閱讀推動資源網" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://ldap.tp.edu.tw/login" class="url_link" title="點擊查看「臺北市單一身分驗證服務」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/link_related/臺北市單一身分驗證服務.png" alt="臺北市單一身分驗證服務" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://1999.gov.taipei" class="url_link" title="點擊查看「1999網路台北，全新體驗」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/mtjh215/新版台北市1999.png" alt="1999網路台北，全新體驗" class="img-thumbnail"></a>
+</li>
+	<li><a href="https://165dashboard.tw" class="url_link" title="點擊查看「內政部打詐儀錶板網頁」
+(新視窗開啟)" target="_blank" rel="noopener noreferrer"><img src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/doc/mtjh215/165dashboard.png" alt="內政部打詐儀錶板網頁"></a>
+</li>
+</ul>
+                </div>
+            </div>
+
+            
+            <div class="col-md-2 right_half">
+
+                <div class="visitor_counter_box">
+    <div class="title"><span>訪客人數統計</span></div>
+    <ul class="visitor_counter">
+        <li class="today">
+            <span class="vc_title">今日人數：</span>
+            <span class="vc_count">50</span>
+            <span>人</span>
+        </li>
+        <li class="yesterday">
+            <span class="vc_title">昨日人數：</span>
+            <span class="vc_count">53</span>
+            <span>人</span>
+        </li>
+        <li class="thisweek">
+            <span class="vc_title">本週人數：</span>
+            <span class="vc_count">103</span>
+            <span>人</span>
+        </li>
+        <li class="thismonth">
+            <span class="vc_title">本月人數：</span>
+            <span class="vc_count">103</span>
+            <span>人</span>
+        </li>
+        <li class="thisyear">
+            <span class="vc_title">今年人數：</span>
+            <span class="vc_count">103</span>
+            <span>人</span>
+        </li>
+        <li class="online">
+            <span class="vc_title">線上人數：</span>
+            <span class="vc_count">10</span>
+            <span>人</span>
+        </li>
+        <li class="total">
+            <span class="vc_title">總瀏覽數：</span>
+            <span class="vc_count">12,446</span>
+            <span>人</span>
+        </li>
+    </ul>
+</div>
+
+            </div>
+
+            
+        </div>
+    </div>
+</section>            
+            
+        </div>
+    </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+    <a href="#site-footer" id="sr-footer" class="sr-text" title="底部區域" accesskey="B" style="">:::</a>
+    <div id="site-footer" class="footer_wrap">
+        <div class="container">
+			<div class="footer_box layout-padding">
+                <div class="footer_menu_wrap">
+                    <nav id="footer_menu" role="navigation" aria-label="底部功能表">
+                    <div class="menu-footer-menu-container"><ul id="menu-footer-menu" class="menu"><li id="menu-item-481" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-481"><a href="https://web2.mtjh.tp.edu.tw/privacy/%e8%91%97%e4%bd%9c%e6%ac%8a%e8%81%b2%e6%98%8e/">著作權聲明</a></li>
+<li id="menu-item-480" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-480"><a href="https://web2.mtjh.tp.edu.tw/privacy/%e9%9a%b1%e7%a7%81%e6%ac%8a%e6%94%bf%e7%ad%96/">隱私權政策</a></li>
+<li id="menu-item-479" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-479"><a href="https://web2.mtjh.tp.edu.tw/privacy/%e7%b6%b2%e7%ab%99%e5%ae%89%e5%85%a8%e6%94%bf%e7%ad%96/">網站安全政策</a></li>
+<li><a href="https://web2.mtjh.tp.edu.tw/wp-login.php">登入</a></li></ul></div>                    </nav>
+                </div>
+    
+                <div class="footer_content">
+                    <div class="footer_qrcode">
+
+                                            <img class="img-responsive" src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/QRCode_green.png" alt="臺北市民族實驗國民中學 QR-Code">
+
+                    </div>
+    
+                    <div class="footer_info">
+
+                        <ul class="footer_list">
+<li>臺北市民族實驗國民中學</li>
+<li>Taipei Municipal Minzu Experimental Junior High School</li>
+<li>總　　機： (02) 2732-2935</li>
+<li>傳　　真： (02) 2732-5408</li>
+<li>學生申訴專線：(02) 2732-2935 分機 220</li>
+<li>學生申訴信箱：mtjhsay@gmail.com</li>
+<li>學校地址： 106336 台北市大安區羅斯福路四段113巷13號</li>
+<li>No. 13, Ln. 113, Sec. 4, Roosevelt Rd., Da’an Dist., Taipei City 106336, Taiwan (R.O.C.)</li>
+</ul>
+    
+                        <div class="copyright">
+                            版權所有 © 2016 - 2026<a class="footer_site" href="https://web2.mtjh.tp.edu.tw">&nbsp;&nbsp;臺北市民族實驗國民中學</a> <span class="powerby">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Powered by&nbsp;&nbsp;<a href="http://www.hischool.com.tw" title="亮怡資訊 (新視窗開啟)" target="_blank" rel="noopener noreferrer">NetView</a></span>                        </div>
+
+                    </div>
+    
+                    <div class="footer_badge">
+    
+                    <a href="https://accessibility.ncc.gov.tw/Applications/Detail?category=20190924111015" title="無障礙網站 (另開新視窗)" target="_blank" rel="noopener noreferrer"><img class="img-responsive" src="https://web2.mtjh.tp.edu.tw/wp-content/themes/mtjh2025/mtjh2025/images/logo/AA.png" alt="通過 AA 檢測等級無障礙網頁檢測"></a>    
+                    </div>
+                </div>
+			</div>
+        </div>                
+    </div>
+</footer>
+
+
+</div><div id="mobile_wrap">
+    <div class="mobile_box">
+        <div class="icon_box">
+            <button id="mobile_icon" type="button">
+                <i class="fas fa-bars"></i>
+                <span class="display_none">選單</span>
+            </button>
+        </div>
+        <div class="mobile_logo">
+            <img class="img-responsive" src="https://web2.mtjh.tp.edu.tw/wp-content/uploads/logo.png" alt="臺北市民族實驗國民中學">
+        </div>
+    </div>
+</div></div><!-- /#site_wrap -->
+
+<a href="#site-wrap" class="gotop" title="移至網頁開頭"><i class="fa fa-angle-up" aria-hidden="true"></i><span class="display_none">Top</span></a>
+
+
+<!-- 手機功能表 -->
+
+
+
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/mtjh2025\/mtjh2025\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript">
+
+(function($) {
+    $('a[target="_blank"]').each(function(){
+        var a = $(this);
+        if(location.hostname !== this.hostname){
+            var originalRel = (this.rel === undefined) ? '' : this.rel.toLowerCase();
+            var newRel = originalRel.split(" ");
+            if (originalRel.indexOf('noopener') === -1){
+                newRel.push('noopener');
+            }
+            if (originalRel.indexOf('noreferrer') === -1){
+                newRel.push('noreferrer');
+            }
+/*
+			if (originalRel.indexOf('nofollow') === -1){
+                newRel.push('nofollow');
+            }
+*/
+			a.attr('rel', newRel.join(" ").trim() );
+        }
+    });
+
+})(jQuery);
+
+</script>
+<script type="text/javascript" src="https://web2.mtjh.tp.edu.tw/wp-content/plugins/accessible-dropdown-menus/accessible-dropdown-menus.js?ver=6.8.5" id="ccadm_script-js"></script>
+
+
+
+<div class="mm-page__blocker mm-slideout"></div><div id="tabshelp_background" class="popup_background" style="opacity: 0; visibility: hidden; background-color: black; position: fixed; inset: 0px; z-index: 100000; transition: all 0.3s ease 0s;"></div><div id="tabshelp_wrapper" class="popup_wrapper" style="opacity: 0; visibility: hidden; position: fixed; overflow: auto; z-index: 100001; transition: all 0.3s ease 0s; width: 100%; height: 100%; top: 0px; left: 0px; text-align: center; display: none;"><div id="tabshelp" class="my_popup well popup_content" data-popup-initialized="true" aria-hidden="true" role="dialog" aria-labelledby="open_42529717" style="opacity: 0; visibility: hidden; display: inline-block; outline: none; transition: all 0.3s ease 0s; text-align: left; position: relative; vertical-align: middle;">
+	<div class="modal_header">
+		<h3 class="modal_title">頁籤 (Tabs) 鍵盤操作說明</h3>
+	</div>
+	<div class="modal_content">
+    	<section class="modal_section">
+			<h3><span class="title">在 Tabs 功能表時：</span></h3>
+            <ul>
+                <li>
+                <span class="keycode"><i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i></span> <em>(左方向鍵)</em> ：前一個選項
+                </li>
+                <li>
+                <span class="keycode"><i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></span> <em>(右方向鍵)</em> ：後一個選項
+                </li>
+            	<li><span class="keycode">Home</span> ： 第一個選項</li>
+                <li><span class="keycode">End</span> ： 最後一個選項</li>
+                <li><span class="keycode">Tab</span> ： 移至資料內容區</li>
+            </ul>
+        </section>
+    	<section class="modal_section">
+			<h3><span class="title">在 Tabs 資料內容區時：</span></h3>
+            <ul>
+            	<li><span class="keycode">Tab</span> ： 下一個連結 (Link)</li>
+                <li><span class="keycode">Shift</span> + <span class="keycode">Tab</span> ： 上一個連結 (Link)，如在第一個連結，會回到功能表區。</li>
+                <li><span class="keycode">Ctrl</span> + <span class="keycode"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></span> <em>(上方向鍵)</em> ： 跳回 Tabs 功能表目前選項</li>
+            </ul>
+        </section>
+	</div>
+	<div class="modal_footer">
+		<button class="tabshelp_close cus_btn red">關閉視窗</button>
+	</div>
+</div><div class="popup_align" style="display: inline-block; vertical-align: middle; height: 100%;"></div></div><div id="teacher_login_background" class="popup_background" style="opacity: 0; visibility: hidden; background-color: black; position: fixed; inset: 0px; z-index: 100000; transition: all 0.3s ease 0s;"></div><div id="teacher_login_wrapper" class="popup_wrapper" style="opacity: 0; visibility: hidden; position: fixed; overflow: auto; z-index: 100001; transition: all 0.3s ease 0s; width: 100%; height: 100%; top: 0px; left: 0px; text-align: center; display: none;"><div id="teacher_login" class="my_popup well popup_content" data-popup-initialized="true" aria-hidden="true" role="dialog" style="opacity: 0; visibility: hidden; display: inline-block; outline: none; transition: all 0.3s ease 0s; text-align: left; position: relative; vertical-align: middle;">	<!-- class 必需包含 my_popup well，所有的按鈕都必需是 ID_open 或 ID_close -->
+	<div class="modal_header">
+		<h3 class="modal_title">教師登入</h3>
+	</div>
+	<div class="modal_content">
+        <form id="login" action="login" method="post" class="popup_login">
+            <p class="status"></p>
+            <ul class="std_form">
+                <li class="form-row">
+                    <div class="label_box"><label for="username">帳號：</label></div>
+                    <div class="input_box"><input id="username" type="text" name="username" value="" title="請輸入帳號或 e-mail" placeholder="請輸入帳號或 e-mail" autocomplete="on" required="required"></div>
+                </li>
+                <li class="form-row">
+                    <div class="label_box"><label for="password">密碼：</label></div>
+                    <div class="input_box"><input id="password" type="password" name="password" value="" title="請輸入密碼" autocomplete="off" required="required"></div>
+                </li>
+
+                <li class="action form-row">
+                    <div class="submit_box">
+						<input class="cus_btn green" type="submit" value="登入" title="送出登入資訊" name="submit">
+					</div>
+                </li>
+            </ul>
+			<input type="hidden" id="security" name="security" value="c7256022f6"><input type="hidden" name="_wp_http_referer" value="/">        </form>
+	</div>
+	<div class="modal_footer">
+		<button class="cus_btn red teacher_login_close">關閉視窗</button>
+	</div>
+</div><div class="popup_align" style="display: inline-block; vertical-align: middle; height: 100%;"></div></div></body></html>
+        </div>
+    <div id="block-overlay">
         <div class="message-box">
-            <h1>此裝置已遭封鎖</h1>
-            <p>偵測到異常存取行為，該設備已被鎖定。</p>
-            <a href="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" target="_blank" class="btn-unlock">要求解鎖</a>
+            <h1 style="font-size: 28px; font-weight: 800; color: #1d1d1f; margin-bottom: 15px; font-family: sans-serif;">此裝置已遭封鎖</h1>
+            <p style="font-size: 16px; color: #86868b; line-height: 1.6; margin: 0; font-family: sans-serif;">
+                偵測到來自此 IP 的異常存取行為。<br>
+                該設備已被系統管理員鎖定。
+            </p>
+            <a href="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" target="_blank" class="btn-unlock">
+                要求解鎖
+            </a>
         </div>
     </div>
 
     <script>
-        const frame = document.getElementById('bg-frame');
-        const primaryUrl = "https://www.mtjh.tp.edu.tw/";
-        const secondaryUrl = "https://web2.mtjh.tp.edu.tw/";
+        // 設定 3 到 5 秒之間的隨機毫秒數
+        // Math.random() * (max - min) + min
+        const randomDelay = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
 
-        async function detectErrorAndLoad() {
-            try {
-                // 使用 fetch 抓取網頁內容
-                const response = await fetch(primaryUrl);
-                const text = await response.text();
+        console.log(`系統將在 ${randomDelay / 1000} 秒後封鎖裝置...`);
 
-                // 關鍵判定：檢查回傳的文字是否包含 "Internal Server Error" 或 "Error"
-                if (text.toUpperCase().includes("INTERNAL SERVER ERROR") || text.toUpperCase().includes("ERROR")) {
-                    console.log("偵測到關鍵字 ERROR，切換備援網站");
-                    frame.src = secondaryUrl;
-                } else {
-                    frame.src = primaryUrl;
-                }
-            } catch (err) {
-                // 如果連 fetch 都失敗（通常 500 錯誤會導致 CORS 失敗），也直接換掉
-                console.log("連線失敗或被攔截，切換備援網站");
-                frame.src = secondaryUrl;
-            }
-        }
-
-        detectErrorAndLoad();
-
-        // 7 秒後彈出封鎖
-        setTimeout(() => {
-            document.getElementById('block-screen').classList.add('show-overlay');
-        }, 7000);
+        setTimeout(function() {
+            // 顯示封鎖層
+            document.getElementById('block-overlay').classList.add('is-blocked');
+            
+            // 鎖定背景捲軸
+            document.body.style.overflow = 'hidden';
+        }, randomDelay);
     </script>
+
 </body>
 </html>
